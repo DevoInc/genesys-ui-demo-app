@@ -3,7 +3,10 @@
 > **Warning**
 > This is an `alpha` version and it is not yet production ready.
 
-This React project serves as a simple consumer for `genesys-ui`, a React with Typescript components library owned by _DevoInc_. It's designed to test the library's bundle and ensure that all components work as expected. Additionally, it serves as a template for understanding how to integrate `genesys-ui` into another project.
+![license](https://img.shields.io/github/license/devoinc/genesys-ui-demo-app)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/devoinc/genesys-ui-demo-app/ci.yml)
+
+This React project serves as a simple consumer for [genesys-ui](https://github.com/DevoInc/genesys-ui), a React with Typescript components library owned by _DevoInc_. It's designed to test the library's bundle and ensure that all components work as expected. Additionally, it serves as a template for understanding how to integrate `genesys-ui` into another project.
 
 ## Getting Started
 
@@ -24,7 +27,7 @@ Open the app in your web browser and ensure that all components from the library
 
 This project satisfies `genesys-ui` peer-dependencies by installing the following packages: `@devoinc/genesys-base-styles`, `@devoinc/genesys-brand-devo`, `@devoinc/genesys-icons`.
 
-It also relies on `@devoinc/eslint-config-devo` and `@devoinc/prettier-config` for linting and code formatting. 
+It also relies on `@devoinc/eslint-config-devo` and `@devoinc/prettier-config` for linting and code formatting.
 
 ## Contributing
 
