@@ -3,7 +3,6 @@ name: ci
 permissions:
   contents: read
   id-token: write
-  pages: write
 
 on:
   push:
@@ -16,11 +15,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-# Allow one concurrent deployment
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
 
 jobs:
   build:
