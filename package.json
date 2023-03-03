@@ -1,0 +1,42 @@
+{
+  "name": "genesys-ui-demo-app",
+  "description": "Genesys UI Consumer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Devo Dev Team",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint 'src/**/*.{ts, tsx}'"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "prettier": "@devoinc/prettier-config",
+  "dependencies": {
+    "@devoinc/genesys-base-styles": "^1.2.1",
+    "@devoinc/genesys-brand-devo": "^5.0.0",
+    "@devoinc/genesys-icons": "^2.1.4",
+    "@devoinc/genesys-ui": "file:../genesys-ui/packages/core",
+    "@devoinc/genesys-ui-datetime": "file:../genesys-ui/packages/datetime",
+    "@devoinc/genesys-ui-form": "file:../genesys-ui/packages/form",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@devoinc/eslint-config-devo": "^1.0.1",
+    "@devoinc/prettier-config": "^1.0.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "eslint": "^8.34.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}

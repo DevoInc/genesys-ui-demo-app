@@ -1,0 +1,6 @@
+{
+  "extends": ["@devoinc/eslint-config-devo/ts-react-newJsx"],
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  }
+}
