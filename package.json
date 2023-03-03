@@ -8,9 +8,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
+    "clean": "rm -rf dist",
     "build": "tsc && vite build",
+    "dist": "npm run clean && npm run build",
     "preview": "vite preview",
-    "lint": "eslint 'src/**/*.{ts, tsx}'"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "lint": "eslint 'src/**/*.{ts, tsx}'",
+    "release": "release-it --dry-run",
+    "release:ci": "release-it --ci"
   },
   "engines": {
     "node": ">=16"
@@ -30,12 +35,14 @@
   "devDependencies": {
     "@devoinc/eslint-config-devo": "^1.0.1",
     "@devoinc/prettier-config": "^1.0.0",
+    "@release-it/conventional-changelog": "^5.1.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@vitejs/plugin-react": "^3.1.0",
     "eslint": "^8.34.0",
+    "release-it": "^15.7.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   }
