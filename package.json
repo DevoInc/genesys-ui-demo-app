@@ -25,9 +25,9 @@
     "@devoinc/genesys-base-styles": "^1.2.1",
     "@devoinc/genesys-brand-devo": "^5.0.0",
     "@devoinc/genesys-icons": "^2.1.4",
-    "@devoinc/genesys-ui": "file:../genesys-ui/packages/core",
-    "@devoinc/genesys-ui-datetime": "file:../genesys-ui/packages/datetime",
-    "@devoinc/genesys-ui-form": "file:../genesys-ui/packages/form",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.9",
+    "@devoinc/genesys-ui-datetime": "^1.0.3-alpha.9",
+    "@devoinc/genesys-ui-form": "^1.0.3-alpha.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6"

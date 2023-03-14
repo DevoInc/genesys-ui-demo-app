@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GridItem } from '@devoinc/genesys-ui';
+import { Grid } from '@devoinc/genesys-ui';
 import { useTheme } from 'styled-components';
 
 export interface GridAppBarProps {
@@ -9,13 +9,13 @@ export interface GridAppBarProps {
 export const AppBar: React.FC<GridAppBarProps> = ({ children }) => {
   const { tokens } = useTheme();
   return (
-    <GridItem
+    <Grid.Item
       gridArea='app-bar'
       forwardedAs='header'
       gridRow='1 / 2'
       zIndex={tokens.alias.elevation.zIndex.depth.stickyTop}
     >
       {children}
-    </GridItem>
+    </Grid.Item>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GridItem } from '@devoinc/genesys-ui';
+import { Grid } from '@devoinc/genesys-ui';
 
 export interface GridAppMainProps {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export const AppMain: React.FC<GridAppMainProps> = ({
   children,
   padding = 'layout-xxs',
 }) => (
-  <GridItem
+  <Grid.Item
     gridArea='app-main'
     forwardedAs='main'
     overflow='auto'
@@ -18,5 +18,5 @@ export const AppMain: React.FC<GridAppMainProps> = ({
     gridRow='2 / 3'
   >
     {children}
-  </GridItem>
+  </Grid.Item>
 );

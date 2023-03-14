@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GridItem } from '@devoinc/genesys-ui';
+import { Grid } from '@devoinc/genesys-ui';
 
 export interface GridLeadContentProps {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ export interface GridLeadContentProps {
 export const LeadContent: React.FC<GridLeadContentProps> = ({
   children,
 }) => (
-  <GridItem gridArea='lead-content' padding='layout-xxs' gridRow='2 / 3'>
+  <Grid.Item gridArea='lead-content' padding='layout-xxs' gridRow='2 / 3'>
     {children}
-  </GridItem>
+  </Grid.Item>
 );
