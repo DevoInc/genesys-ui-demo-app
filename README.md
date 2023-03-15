@@ -1,8 +1,5 @@
 # Genesys-ui demo app
 
-> **Warning**
-> This is an `alpha` version and it is not yet production ready.
-
 ![license](https://img.shields.io/github/license/devoinc/genesys-ui-demo-app)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/devoinc/genesys-ui-demo-app/ci.yml)
 
