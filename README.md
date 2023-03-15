@@ -1,4 +1,4 @@
-# Genesys-ui consumer
+# Genesys-ui demo app
 
 > **Warning**
 > This is an `alpha` version and it is not yet production ready.
