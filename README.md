@@ -6,7 +6,7 @@
 ![license](https://img.shields.io/github/license/devoinc/genesys-ui-demo-app)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/devoinc/genesys-ui-demo-app/ci.yml)
 
-This React project serves as a simple consumer for [genesys-ui](https://github.com/DevoInc/genesys-ui), a React with Typescript components library owned by _DevoInc_. It's designed to test the library's bundle and ensure that all components work as expected. Additionally, it serves as a template for understanding how to integrate `genesys-ui` into another project. The steps followed to create this project are detailed in the [Installation](https://devoinc.github.io/genesys-ui/?path=/docs/getting-started-installation--docs) section of [Genesys UI](https://github.com/DevoInc/genesys-ui)'s storybook.
+This React project serves as a simple consumer for [genesys-ui](https://github.com/DevoInc/genesys-ui), a React with Typescript components library owned by _DevoInc_. It's designed to test the library's bundle and ensure that all components work as expected. Additionally, it serves as a template for understanding how to integrate `genesys-ui` into another project. The steps followed to integrate Genesys UI into this project are detailed in the [Installation](https://devoinc.github.io/genesys-ui/?path=/docs/getting-started-installation--docs) section of [Genesys UI](https://github.com/DevoInc/genesys-ui)'s storybook.
 
 ## Getting Started
 
