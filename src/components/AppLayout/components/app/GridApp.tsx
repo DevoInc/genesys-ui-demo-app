@@ -7,8 +7,8 @@ export interface GridAppProps {
 }
 
 export const App: React.FC<GridAppProps> = ({ children }) => {
-  const { tokens } = useTheme();
-  const appBarHeight = tokens.alias.size.height.surface.md;
+  const theme = useTheme();
+  const appBarHeight = theme.alias.size.height.surface.md;
   return (
     <Grid
       gridTemplateAreas='"app-bar" "app-main"'

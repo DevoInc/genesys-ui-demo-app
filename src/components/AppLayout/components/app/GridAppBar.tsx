@@ -7,13 +7,13 @@ export interface GridAppBarProps {
 }
 
 export const AppBar: React.FC<GridAppBarProps> = ({ children }) => {
-  const { tokens } = useTheme();
+  const theme = useTheme();
   return (
     <Grid.Item
       gridArea='app-bar'
       forwardedAs='header'
       gridRow='1 / 2'
-      zIndex={tokens.alias.elevation.zIndex.depth.stickyTop}
+      zIndex={theme.alias.elevation.zIndex.depth.stickyTop}
     >
       {children}
     </Grid.Item>

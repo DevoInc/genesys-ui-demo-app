@@ -7,9 +7,9 @@ export interface GridLeadProps {
 }
 
 export const Lead: React.FC<GridLeadProps> = ({ children }) => {
-  const { tokens } = useTheme();
-  const leadNavHeight = tokens.alias.size.height.surface.xxs as string; //TODO: review this
-  const appBarHeight = tokens.alias.size.height.surface.md;
+  const theme = useTheme();
+  const leadNavHeight = theme.alias.size.height.surface.xxs as string; //TODO: review this
+  const appBarHeight = theme.alias.size.height.surface.md;
   return (
     <Grid
       gridTemplateAreas='"lead-nav" "lead-content"'

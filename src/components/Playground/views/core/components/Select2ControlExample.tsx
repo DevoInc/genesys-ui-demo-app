@@ -1,8 +1,8 @@
-import { Select2Control } from '@devoinc/genesys-ui';
+import { SelectControl } from '@devoinc/genesys-ui';
 
 export const Select2ControlExample = () => {
   return (
-    <Select2Control
+    <SelectControl
       aria-label='select-control'
       id={'select-control'}
       size={'lg'}

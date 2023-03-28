@@ -25,7 +25,7 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <SchemaContext.Provider value={{ schema, toggleSchema }}>
-      <StyledThemeProvider theme={{ tokens: brand[schema] }}>
+      <StyledThemeProvider theme={brand[schema]}>
         {children}
       </StyledThemeProvider>
     </SchemaContext.Provider>
