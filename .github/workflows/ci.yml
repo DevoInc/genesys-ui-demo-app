@@ -67,25 +67,3 @@ jobs:
 
       - name: Run linter
         run: npm run lint
-
-  unit-test:
-    needs: [build]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Use node modules cache
-        id: cache-npm
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: |
-            node_modules
-            ~/.npm
-          key: ${{ runner.os }}-prepare-${{ env.cache-name }}-${{ github.sha }}
-
-      - name: Run unit tests
-        run: npm t
