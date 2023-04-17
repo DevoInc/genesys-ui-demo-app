@@ -16,7 +16,7 @@ Follow these steps to get started with this project:
 
 ### Testing the Bundle
 
-To test the `genesys-ui` bundle, you can run this project using `npm run dev`. This will build the app and serve it on a local web server.
+To test the `genesys-ui` bundle, you can run this project using `npm start`. This will build the app and serve it on a local web server.
 
 Open the app in your web browser and ensure that all components from the library are rendering as expected.
 
