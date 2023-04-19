@@ -9,7 +9,8 @@
   "scripts": {
     "start": "vite",
     "preview": "vite preview",
-    "lint": "eslint 'src/**/*'"
+    "lint": "eslint 'src/**/*'",
+    "build": "vite build"
   },
   "engines": {
     "node": ">=16"
