@@ -18,25 +18,26 @@
   "prettier": "@devoinc/prettier-config",
   "dependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
-    "@devoinc/genesys-brand-devo": "^5.0.0",
-    "@devoinc/genesys-icons": "^2.1.4",
-    "@devoinc/genesys-ui": "^1.0.3-alpha.13",
-    "@devoinc/genesys-ui-datetime": "^1.0.3-alpha.13",
-    "@devoinc/genesys-ui-form": "^1.0.3-alpha.13",
+    "@devoinc/genesys-brand-devo": "^5.15.0",
+    "@devoinc/genesys-icons": "^3.0.1",
+    "@devoinc/genesys-ui": "^1.0.3-alpha.19",
+    "@devoinc/genesys-ui-datetime": "^1.0.3-alpha.19",
+    "@devoinc/genesys-ui-form": "^1.0.3-alpha.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@devoinc/eslint-config-devo": "^1.0.1",
+    "@devoinc/eslint-config-devo": "^1.0.2",
     "@devoinc/prettier-config": "^1.0.0",
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@vitejs/plugin-react": "^3.1.0",
-    "eslint": "^8.34.0",
-    "typescript": "^4.9.3",
-    "vite": "^4.1.5"
+    "eslint": "^8.45.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.4.6"
   }
 }
+ 
