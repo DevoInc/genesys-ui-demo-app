@@ -1,1 +1,1 @@
-export * from 'DateTimeRangePickerExample';
+export * from './DateTimeRangePickerExample';

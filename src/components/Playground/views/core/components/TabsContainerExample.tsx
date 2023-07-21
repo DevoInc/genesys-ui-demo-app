@@ -7,13 +7,13 @@ export const TabsContainerExample = () => {
   return (
     <Tabs contained={true} aria-label='DemoTabs'>
       <Tabs.Item
-        iconId='check_thick'
+        icon='gi-check_thick'
         label='Tiny'
         onTabClick={() => setActiveTab(0)}
         state={activeTab === 0 ? 'selected' : undefined}
       />
       <Tabs.Item
-        iconId='check_thick'
+        icon='gi-check_thick'
         label='Tab with a very very long title'
         onTabClick={() => setActiveTab(1)}
         state={activeTab === 1 ? 'selected' : undefined}

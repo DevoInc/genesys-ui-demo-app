@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 // Light and Dark schemas.
-import brand from '@devoinc/genesys-brand-devo';
+import * as brand from '@devoinc/genesys-brand-devo';
 
 type Schema = keyof typeof brand;
 

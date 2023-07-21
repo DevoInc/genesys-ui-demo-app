@@ -1,3 +1,8 @@
-import { BoxMessage } from '@devoinc/genesys-ui';
+import { BoxMessage, Typography } from '@devoinc/genesys-ui';
 
-export const BoxMessageExample = () => <BoxMessage title='This is a Box Message' content='Is this really a Box Message? I would say so...' />;
+export const BoxMessageExample = () => (
+  <BoxMessage
+    title={<Typography.Heading>This is a Box Message</Typography.Heading>}
+    content='Is this really a Box Message? I would say so...'
+  />
+);

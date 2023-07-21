@@ -1,16 +1,11 @@
 import * as React from 'react';
-import { Button } from '@devoinc/genesys-ui';
+import { Button, Tabs, TabsItemProps } from '@devoinc/genesys-ui';
 import { useSchema } from '../providers/ThemeProvider';
-import {
-  // TODO: export types correctly
-  AppBarActionsType,
-  AppBarTabsType,
-} from '@devoinc/genesys-ui/dist/components/AppBar/declarations';
 
 type UseAppBarData = () => {
-  tabs: AppBarTabsType;
+  tabItems: React.ReactElement<TabsItemProps>[];
   selectedTab: string;
-  mainActions: AppBarActionsType;
+  actions: React.ReactElement[];
 };
 
 export const useAppBarData: UseAppBarData = () => {
@@ -18,22 +13,31 @@ export const useAppBarData: UseAppBarData = () => {
 
   const [selectedTab, setSelectedTab] = React.useState('Core');
 
-  const tabs: AppBarTabsType = React.useMemo(
+  const tabItems = React.useMemo(
     () => [
-      {
-        label: 'Some components from Core',
-        onTabClick: () => setSelectedTab('Core'),
-      },
-      { label: 'A few from Form', onTabClick: () => setSelectedTab('Form') },
-      {
-        label: 'Some others from Datetime',
-        onTabClick: () => setSelectedTab('Datetime'),
-      },
+      <Tabs.Item
+        key='core'
+        label='Some components from Core'
+        onTabClick={() => setSelectedTab('Core')}
+        state={selectedTab === 'Core' ? 'selected' : 'enabled'}
+      />,
+      <Tabs.Item
+        key='form'
+        label='A few from Form'
+        onTabClick={() => setSelectedTab('Form')}
+        state={selectedTab === 'Form' ? 'selected' : 'enabled'}
+      />,
+      <Tabs.Item
+        key='datetime'
+        label='Some others from Datetime'
+        onTabClick={() => setSelectedTab('Datetime')}
+        state={selectedTab === 'Datetime' ? 'selected' : 'enabled'}
+      />,
     ],
-    []
+    [selectedTab]
   );
 
-  const mainActions: AppBarActionsType = React.useMemo(
+  const actions = React.useMemo(
     () => [
       /**
        * TODO:
@@ -49,5 +53,5 @@ export const useAppBarData: UseAppBarData = () => {
     [schema, toggleSchema]
   );
 
-  return { selectedTab, tabs, mainActions };
+  return { selectedTab, tabItems, actions };
 };

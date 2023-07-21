@@ -1,22 +1,13 @@
 import * as React from 'react';
 import { Grid } from '@devoinc/genesys-ui';
+import { GridItemProps } from '@devoinc/genesys-ui/dist/types/src/components/Grid/subcomponents';
 
 export interface GridAppMainProps {
-  children: React.ReactNode;
-  padding?: string;
+  children: GridItemProps['children'];
 }
 
-export const AppMain: React.FC<GridAppMainProps> = ({
-  children,
-  padding = 'layout-xxs',
-}) => (
-  <Grid.Item
-    gridArea='app-main'
-    forwardedAs='main'
-    overflow='auto'
-    padding={padding}
-    gridRow='2 / 3'
-  >
+export const AppMain: React.FC<GridAppMainProps> = ({ children }) => (
+  <Grid.Item gridArea='app-main' overflow='auto' gridRow='2 / 3'>
     {children}
   </Grid.Item>
 );

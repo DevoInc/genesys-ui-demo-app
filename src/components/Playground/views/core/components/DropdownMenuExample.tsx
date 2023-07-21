@@ -1,10 +1,8 @@
-import { Button, DropdownA11yMenu } from '@devoinc/genesys-ui';
+import { Button, DropdownMenu, DropdownMenuProps } from '@devoinc/genesys-ui';
 
-// TODO: export types correctly
-import { DropdownItem } from '@devoinc/genesys-ui/dist/components/DropdownA11yMenu/declarations';
-
-export const data: DropdownItem[] = [
+export const data: DropdownMenuProps['items'] = [
   {
+    key: '1',
     type: 'itemCheckbox',
     label: 'Pixel grid',
     shortcut: "⌘ '",
@@ -23,6 +21,7 @@ export const data: DropdownItem[] = [
     checked: false,
   },
   {
+    key: '2',
     type: 'item',
     label: 'Layout Grids',
     tooltip: {
@@ -38,6 +37,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '3',
     type: 'item',
     label: 'Delete Layout',
     icon: 'bin_trash_recycle_delete_garbage_empty',
@@ -47,6 +47,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '4',
     type: 'item',
     label: 'Mask Outlines',
     disabled: true,
@@ -56,6 +57,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '5',
     type: 'item',
     label: 'Frame Outlines',
     highlighted: true,
@@ -65,6 +67,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '6',
     type: 'item',
     label: 'Resource Use',
     disabled: true,
@@ -73,6 +76,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '7',
     type: 'item',
     label: 'Rulers',
     shortcut: '⇧ R',
@@ -81,6 +85,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '8',
     type: 'item',
     label: 'Outlines',
     shortcut: '⌘ Y',
@@ -89,6 +94,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '9',
     type: 'itemSubMenu',
     label: 'Copy as',
     subMenuDirection: 'right',
@@ -99,6 +105,7 @@ export const data: DropdownItem[] = [
         shortcut: '⌘ + s',
         subMenu: [
           {
+            key: '9.1',
             type: 'item',
             label: 'Template 2',
             shortcut: '⌘ + s',
@@ -107,6 +114,7 @@ export const data: DropdownItem[] = [
             },
           },
           {
+            key: '9.2',
             type: 'item',
             label: 'Outlines 2.1',
             shortcut: '⌘ Y',
@@ -117,6 +125,7 @@ export const data: DropdownItem[] = [
         ],
       },
       {
+        key: '9.3',
         type: 'item',
         label: 'Outlines 1',
         shortcut: '⌘ Y',
@@ -125,6 +134,7 @@ export const data: DropdownItem[] = [
         },
       },
       {
+        key: '9.4',
         type: 'item',
         label: 'Outlines 1.1',
         shortcut: '⌘ Y',
@@ -135,6 +145,7 @@ export const data: DropdownItem[] = [
     ],
   },
   {
+    key: '10',
     type: 'itemCheckbox',
     label: 'Show/Hide UI 1',
     shortcut: '⌘ \\',
@@ -142,6 +153,7 @@ export const data: DropdownItem[] = [
     onChange: () => ({}),
   },
   {
+    key: '11',
     type: 'itemCheckbox',
     label: 'Show/Hide UI 2',
     shortcut: '⇧ ⌘ \\',
@@ -149,6 +161,7 @@ export const data: DropdownItem[] = [
     onChange: () => ({}),
   },
   {
+    key: '12',
     type: 'itemCheckbox',
     label: 'Show/Hide UI 3',
     shortcut: '⌥ ⌘ \\',
@@ -156,6 +169,7 @@ export const data: DropdownItem[] = [
     onChange: () => ({}),
   },
   {
+    key: '13',
     type: 'item',
     label: 'Zoom In',
     shortcut: '+',
@@ -164,6 +178,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '14',
     type: 'item',
     label: 'Zoom out',
     shortcut: '-',
@@ -172,6 +187,7 @@ export const data: DropdownItem[] = [
     },
   },
   {
+    key: '15',
     type: 'itemLink',
     label: 'Help',
     href: '/help',
@@ -188,13 +204,12 @@ export const data: DropdownItem[] = [
   },
 ];
 
-export const DropdownA11yMenuExample = () => {
+export const DropdownMenuExample = () => {
   return (
-    <DropdownA11yMenu
+    <DropdownMenu
       triggerComponent={Button}
       label='DropdownA11yMenu'
       items={data}
-      customStyled={{ maxWidth: '30rem' }}
     />
   );
 };

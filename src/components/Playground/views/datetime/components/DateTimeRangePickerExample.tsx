@@ -54,13 +54,14 @@ export const DateTimeRangePickerExample = () => {
 
   return (
     <DateTimeRangePicker
+      id='datetime-range-picker'
       dateForMonth={new Date().getTime()}
       weekDays={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
       value={date}
-      onChange={(d) => setDate(d)}
+      onChange={(d) => setDate({ from: Number(d.from), to: Number(d.to) })}
       expresionToTime={expresionToTimeCallback}
       presets={presets}
-      realTimeState={'inactive'}
+      realTime={'activated'}
       onApply={() => ({})}
       onCancel={() => ({})}
       onBlur={() => ({})}

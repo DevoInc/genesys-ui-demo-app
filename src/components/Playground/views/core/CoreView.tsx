@@ -10,7 +10,7 @@ import {
 import {
   AvatarExample,
   ContentSwitcherExample,
-  DropdownA11yMenuExample,
+  DropdownMenuExample,
   StepperExample,
   TabsContainerExample,
   BoxMessageExample,
@@ -34,7 +34,7 @@ export const CoreView: React.FC = () => {
         <DevoLogoLoader />
       </Flex>
       <Flex>
-        <DropdownA11yMenuExample />
+        <DropdownMenuExample />
       </Flex>
       <Typography.Heading size='h1'>
         Sample of components from{' '}

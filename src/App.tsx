@@ -8,7 +8,7 @@ import { useAppBarData } from './hooks';
 import { MainMenuContent } from './components/MainMenuContent';
 
 export const App = () => {
-  const { mainActions, tabs, selectedTab } = useAppBarData();
+  const { actions, tabItems, selectedTab } = useAppBarData();
   return (
     <StyledAppLayoutContainer>
       <AppLayout.Global>
@@ -19,9 +19,9 @@ export const App = () => {
           <AppLayout.App>
             <AppLayout.AppBar>
               <AppBar
-                title='Genesys UI Consumer'
-                mainActions={mainActions}
-                tabs={tabs}
+                heading='Genesys UI Consumer'
+                actions={actions}
+                tabItems={tabItems}
               />
             </AppLayout.AppBar>
             <AppLayout.AppMain>

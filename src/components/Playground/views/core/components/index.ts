@@ -1,5 +1,5 @@
 export * from './ContentSwitcherExample';
-export * from './DropdownA11yMenuExample';
+export * from './DropdownMenuExample';
 export * from './StepperExample';
 export * from './TabsContainerExample';
 export * from './AvatarExample';

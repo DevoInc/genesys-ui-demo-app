@@ -8,10 +8,10 @@ export const ContentSwitcherExample = () => {
   return (
     <ContentSwitcher size='md'>
       {options.map((option) => (
-        <ContentSwitcher.Item //TODO: review this
-          iconId='heart_full'
+        <ContentSwitcher.Item
+          icon='gi-heart_full'
           key={option}
-          selected={option === selection}
+          state={option === selection ? 'selected' : 'enabled'}
           onClick={() => {
             setSelection(option);
           }}
