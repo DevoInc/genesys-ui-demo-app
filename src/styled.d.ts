@@ -1,5 +1,5 @@
 import 'styled-components';
-import { Brand } from '@devoinc/genesys-brand-devo';
+import type { Brand } from '@devoinc/genesys-brand-devo';
 
 // Include own theme interface in styled-components declarations.
 declare module 'styled-components' {
