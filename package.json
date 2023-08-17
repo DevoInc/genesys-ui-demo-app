@@ -19,7 +19,7 @@
   "prettier": "@devoinc/prettier-config",
   "dependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
-    "@devoinc/genesys-brand-devo": "^6.0.0",
+    "@devoinc/genesys-brand-devo": "^6.0.1",
     "@devoinc/genesys-icons": "^3.0.1",
     "@devoinc/genesys-ui": "^1.0.3-alpha.19",
     "@devoinc/genesys-ui-datetime": "^1.0.3-alpha.19",
