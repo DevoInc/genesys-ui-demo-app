@@ -17,21 +17,27 @@ export const useAppBarData: UseAppBarData = () => {
     () => [
       <Tabs.Item
         key='core'
-        label='Some components from Core'
-        onTabClick={() => setSelectedTab('Core')}
+        label='Core'
+        onClick={() => setSelectedTab('Core')}
         state={selectedTab === 'Core' ? 'selected' : 'enabled'}
       />,
       <Tabs.Item
         key='form'
-        label='A few from Form'
-        onTabClick={() => setSelectedTab('Form')}
+        label='Form'
+        onClick={() => setSelectedTab('Form')}
         state={selectedTab === 'Form' ? 'selected' : 'enabled'}
       />,
       <Tabs.Item
         key='datetime'
-        label='Some others from Datetime'
-        onTabClick={() => setSelectedTab('Datetime')}
+        label='Datetime'
+        onClick={() => setSelectedTab('Datetime')}
         state={selectedTab === 'Datetime' ? 'selected' : 'enabled'}
+      />,
+      <Tabs.Item
+        key='code'
+        label='Code'
+        onClick={() => setSelectedTab('Code')}
+        state={selectedTab === 'Code' ? 'selected' : 'enabled'}
       />,
     ],
     [selectedTab]

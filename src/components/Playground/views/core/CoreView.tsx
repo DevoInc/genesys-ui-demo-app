@@ -13,7 +13,6 @@ import {
   DropdownMenuExample,
   StepperExample,
   TabsContainerExample,
-  BoxMessageExample,
   IconExample,
   ToastExample,
   Select2ControlExample,
@@ -63,7 +62,6 @@ export const CoreView: React.FC = () => {
         </TagGroup>
       </Flex>
       <TabsContainerExample />
-      <BoxMessageExample />
       <Flex justifyContent='flex-end'>
         <IconExample />
       </Flex>

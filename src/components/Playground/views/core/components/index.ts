@@ -3,7 +3,6 @@ export * from './DropdownMenuExample';
 export * from './StepperExample';
 export * from './TabsContainerExample';
 export * from './AvatarExample';
-export * from './BoxMessageExample';
 export * from './DevoLogoLoaderExample';
 export * from './IconExample';
 export * from './ToastExample';
