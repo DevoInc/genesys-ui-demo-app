@@ -56,7 +56,7 @@ export const useAppBarData: UseAppBarData = () => {
        * must be either controlled or uncontrolled (specify either the checked prop,
        * or the defaultChecked prop, but not both).
        */
-      <HFlex spacing="cmp-sm">
+      <HFlex spacing="cmp-sm" key="one">
         <Button key="1" selectionScheme="multiple" onChange={toggleSchema}>
           {schema === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
         </Button>

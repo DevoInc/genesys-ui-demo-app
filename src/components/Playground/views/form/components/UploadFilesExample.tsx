@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { UploadFiles } from '@devoinc/genesys-ui-form';
 
 export const UploadFilesExample = () => (

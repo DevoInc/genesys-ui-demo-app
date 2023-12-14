@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Checkbox, CheckboxGroup } from '@devoinc/genesys-ui-form';
 
 export const CheckBoxGroupExample = () => (

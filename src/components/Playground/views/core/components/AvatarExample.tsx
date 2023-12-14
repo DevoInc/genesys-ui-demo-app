@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Avatar } from '@devoinc/genesys-ui';
 
 export const AvatarExample = () => {

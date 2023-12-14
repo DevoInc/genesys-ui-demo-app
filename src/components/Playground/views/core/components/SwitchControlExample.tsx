@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SwitchControl } from '@devoinc/genesys-ui';
 import { useSchema } from '../../../../../providers/ThemeProvider';
 

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { HFlex, Icon, Typography, VFlex } from '@devoinc/genesys-ui';
 
 export const IconExample = () => (

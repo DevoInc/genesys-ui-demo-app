@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Switch } from '@devoinc/genesys-ui-form';
 import { useSchema } from '../../../../../providers/ThemeProvider';
 

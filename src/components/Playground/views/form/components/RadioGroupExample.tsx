@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Radio, RadioGroup } from '@devoinc/genesys-ui-form';
 
 export const RadioGroupExample = () => (

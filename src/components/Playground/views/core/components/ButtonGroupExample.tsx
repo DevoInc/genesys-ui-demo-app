@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Button, ButtonGroup, IconButton } from '@devoinc/genesys-ui';
 
 export const ButtonGroupExample = () => {

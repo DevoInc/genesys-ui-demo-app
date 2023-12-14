@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SelectControl } from '@devoinc/genesys-ui';
 
 export const Select2ControlExample = () => {

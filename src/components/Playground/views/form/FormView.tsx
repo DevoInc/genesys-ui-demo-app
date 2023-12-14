@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Flex } from '@devoinc/genesys-ui';
 import {
   CheckBoxGroupExample,

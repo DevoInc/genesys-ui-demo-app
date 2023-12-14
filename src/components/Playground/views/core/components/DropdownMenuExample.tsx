@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Button, DropdownMenu, DropdownMenuProps } from '@devoinc/genesys-ui';
 
 export const data: DropdownMenuProps['items'] = [

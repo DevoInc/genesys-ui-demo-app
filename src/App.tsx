@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { AppBar, AppLayout, PanelSection } from '@devoinc/genesys-ui';
 
 import { useAppBarData } from './hooks';

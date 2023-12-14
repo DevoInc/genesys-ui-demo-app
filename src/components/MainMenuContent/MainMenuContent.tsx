@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Flex, Typography } from '@devoinc/genesys-ui';
 
 export const MainMenuContent = () => (
