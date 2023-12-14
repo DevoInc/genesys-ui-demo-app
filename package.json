@@ -16,12 +16,11 @@
   "engines": {
     "node": ">=16"
   },
-  "prettier": "@devoinc/prettier-config",
   "dependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
     "@devoinc/genesys-brand-devo": "^6.1.2",
-    "@devoinc/genesys-icons": "^3.2.2",
-    "@devoinc/genesys-ui": "^1.0.3",
+    "@devoinc/genesys-icons": "^3.5.1",
+    "@devoinc/genesys-ui": "^1.5.1",
     "@devoinc/genesys-ui-code": "^1.0.3",
     "@devoinc/genesys-ui-datetime": "^1.0.3",
     "@devoinc/genesys-ui-form": "^1.0.3",
@@ -30,14 +29,15 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@devoinc/eslint-config-devo": "^1.0.2",
-    "@devoinc/prettier-config": "^1.0.0",
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
     "@types/styled-components": "^5.1.29",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@vitejs/plugin-react": "^4.1.0",
     "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.0",
     "typescript": "^4.9.5",
     "vite": "^4.5.0"
   }

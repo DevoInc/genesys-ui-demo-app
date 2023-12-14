@@ -40,7 +40,7 @@ export const data: DropdownMenuProps['items'] = [
     key: '3',
     type: 'item',
     label: 'Delete Layout',
-    icon: 'bin_trash_recycle_delete_garbage_empty',
+    icon: 'gi-bin_trash_recycle_delete_garbage_empty',
     shortcut: '⌘ E',
     action: () => {
       window.console.log('Clicked in Delete');
