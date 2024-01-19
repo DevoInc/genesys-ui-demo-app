@@ -16,6 +16,10 @@ import {
 
 import { NotificationItem, NotificationItemProps } from './components';
 import { AppBarUserOptionsProps } from '../../AppBarUserOptions';
+import {
+  USER_OPTIONS_POPOVER_OFFSET,
+  USER_OPTIONS_POPOVER_OFFSET_COMPACT,
+} from '../../constants';
 
 const notificationsConfig: Omit<NotificationItemProps, 'closeOnClick'>[] = [
   {
@@ -73,7 +77,12 @@ export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
         {
           name: 'offset',
           options: {
-            offset: [0, 8],
+            offset: [
+              0,
+              compact
+                ? USER_OPTIONS_POPOVER_OFFSET_COMPACT
+                : USER_OPTIONS_POPOVER_OFFSET,
+            ],
           },
         },
       ]}

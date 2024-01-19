@@ -2,7 +2,10 @@ import * as React from 'react';
 
 import { GITimeZone } from '@devoinc/genesys-icons';
 
-import { USER_OPTIONS_POPOVER_OFFSET } from '../constants';
+import {
+  USER_OPTIONS_POPOVER_OFFSET,
+  USER_OPTIONS_POPOVER_OFFSET_COMPACT,
+} from '../constants';
 
 import {
   Banner,
@@ -31,7 +34,12 @@ export const TimeZone: React.FC<TimeZoneProps> = ({ compact }) => {
         {
           name: 'offset',
           options: {
-            offset: [0, USER_OPTIONS_POPOVER_OFFSET],
+            offset: [
+              0,
+              compact
+                ? USER_OPTIONS_POPOVER_OFFSET_COMPACT + 2
+                : USER_OPTIONS_POPOVER_OFFSET,
+            ],
           },
         },
       ]}

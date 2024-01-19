@@ -2,7 +2,10 @@ import * as React from 'react';
 
 import { GISearchFindZoom } from '@devoinc/genesys-icons';
 
-import { USER_OPTIONS_POPOVER_OFFSET } from '../constants';
+import {
+  USER_OPTIONS_POPOVER_OFFSET,
+  USER_OPTIONS_POPOVER_OFFSET_COMPACT,
+} from '../constants';
 
 import {
   Chip,
@@ -34,7 +37,12 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
         {
           name: 'offset',
           options: {
-            offset: [0, USER_OPTIONS_POPOVER_OFFSET],
+            offset: [
+              0,
+              compact
+                ? USER_OPTIONS_POPOVER_OFFSET_COMPACT
+                : USER_OPTIONS_POPOVER_OFFSET,
+            ],
           },
         },
       ]}

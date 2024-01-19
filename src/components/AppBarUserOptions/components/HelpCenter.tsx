@@ -6,7 +6,10 @@ import {
   GIWindowNewExternFullScreenMaximize,
 } from '@devoinc/genesys-icons';
 
-import { USER_OPTIONS_POPOVER_OFFSET } from '../constants';
+import {
+  USER_OPTIONS_POPOVER_OFFSET,
+  USER_OPTIONS_POPOVER_OFFSET_COMPACT,
+} from '../constants';
 
 import {
   Button,
@@ -36,7 +39,12 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
         {
           name: 'offset',
           options: {
-            offset: [0, USER_OPTIONS_POPOVER_OFFSET],
+            offset: [
+              0,
+              compact
+                ? USER_OPTIONS_POPOVER_OFFSET_COMPACT
+                : USER_OPTIONS_POPOVER_OFFSET,
+            ],
           },
         },
       ]}

@@ -6,8 +6,10 @@ import { useSchema } from '../../../providers/ThemeProvider';
 import { GIExitLogoutDoorEmergencyOutside } from '@devoinc/genesys-icons';
 
 import {
+  USER_OPTIONS_POPOVER_AVATAR_OFFSET,
   USER_OPTIONS_POPOVER_NESTED_OFFSET,
   USER_OPTIONS_POPOVER_OFFSET,
+  USER_OPTIONS_POPOVER_OFFSET_COMPACT,
 } from '../constants';
 
 import {
@@ -94,7 +96,12 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
         {
           name: 'offset',
           options: {
-            offset: [0, USER_OPTIONS_POPOVER_OFFSET - 4],
+            offset: [
+              0,
+              compact
+                ? USER_OPTIONS_POPOVER_OFFSET_COMPACT
+                : USER_OPTIONS_POPOVER_AVATAR_OFFSET,
+            ],
           },
         },
       ]}
