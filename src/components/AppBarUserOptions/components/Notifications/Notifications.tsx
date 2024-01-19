@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { css } from 'styled-components';
 
 import { GIBellRingerAlarmSound } from '@devoinc/genesys-icons';
 
@@ -8,12 +9,13 @@ import {
   Divider,
   IconButton,
   Panel,
-  Popper,
+  Popover,
   Typography,
   VFlex,
 } from '@devoinc/genesys-ui';
 
 import { NotificationItem, NotificationItemProps } from './components';
+import { AppBarUserOptionsProps } from '../../AppBarUserOptions';
 
 const notificationsConfig: Omit<NotificationItemProps, 'closeOnClick'>[] = [
   {
@@ -55,101 +57,123 @@ const notificationsConfig: Omit<NotificationItemProps, 'closeOnClick'>[] = [
   },
 ];
 
-export const Notifications = () => {
-  const [isVisible, setIsVisible] = React.useState(false);
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface NotificationsProps extends AppBarUserOptionsProps {}
+
+export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
   const [isBadgeVisible, setIsBadgeVisible] = React.useState(true);
   const [notificationsList, setNotificationsList] = React.useState([
     0, 1, 2, 3, 4,
   ]);
   return (
-    <Popper
+    <Popover
+      id="appbar-notifications-dropdown"
       placement="bottom-end"
-      offset={[0, 0]}
-      visible={isVisible}
-      setIsVisible={setIsVisible}
-      trigger={
+      modifiers={[
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8],
+          },
+        },
+      ]}
+    >
+      {({ toggle, ref, isOpened }) => (
         <IconButton
           aria-controls="appbar-notifications-dropdown"
           aria-haspopup="true"
-          aria-expanded={isVisible}
-          size="lg"
+          aria-expanded={isOpened}
+          size={compact ? 'sm' : 'lg'}
           colorScheme="quiet"
           circular
-          onClick={() => setIsBadgeVisible(false)}
+          onClick={(event: React.MouseEvent<HTMLElement>) => {
+            setIsBadgeVisible(false);
+            toggle(event);
+          }}
+          ref={ref}
+          state={isOpened ? 'expanded' : undefined}
         >
           <GIBellRingerAlarmSound
-            size="2rem"
+            size={compact ? '1.8rem' : '2rem'}
             style={{ position: 'relative' }}
           />
           {isBadgeVisible && notificationsList.length > 0 && (
             <Badge
-              text={notificationsList.length.toString()}
+              text={compact ? undefined : notificationsList.length.toString()}
+              size={compact ? 'sm' : 'md'}
               colorScheme="info"
-              styles="position: absolute; top: -0.4rem; right: -0.2rem;"
+              styles={css`
+                position: absolute;
+                width: ${compact && '0.8rem'};
+                height: ${compact && '0.8rem'};
+                min-width: ${compact && '0'};
+                top: ${compact ? '0' : '-0.4rem'};
+                right: -0.2rem;
+              `}
             />
           )}
         </IconButton>
-      }
-    >
-      <Panel
-        elevation="activated"
-        width="44rem"
-        maxHeight="48rem"
-        id="appbar-notifications-dropdown"
-        closeSettings={{
-          onClick: () => setIsVisible(false),
-          tooltip: 'Close this panel',
-        }}
-        headerSettings={{
-          renderContent: (
-            <>
-              <Panel.Header.Heading title="Notifications" size="sm" />
-              {notificationsList.length > 0 && (
-                <>
-                  <Button size="sm" onClick={() => setNotificationsList([])}>
-                    Clear all
-                  </Button>
-                  <Divider vertical height="2.4rem" margin="0 0 0 cmp-md" />
-                </>
+      )}
+      {({ setOpened }) => (
+        <Panel
+          elevation="activated"
+          width="44rem"
+          maxHeight="48rem"
+          closeSettings={{
+            onClick: () => setOpened(false),
+            tooltip: 'Close this panel',
+          }}
+          headerSettings={{
+            renderContent: (
+              <>
+                <Panel.Header.Heading title="Notifications" size="sm" />
+                {notificationsList.length > 0 && (
+                  <>
+                    <Button size="sm" onClick={() => setNotificationsList([])}>
+                      Clear all
+                    </Button>
+                    <Divider vertical height="2.4rem" margin="0 0 0 cmp-md" />
+                  </>
+                )}
+                <Panel.Header.Close
+                  size="sm"
+                  onClick={() => setOpened(false)}
+                  tooltip="Close this panel"
+                />
+              </>
+            ),
+            bordered: true,
+          }}
+          title="Notifications"
+        >
+          {notificationsList.length > 0 ? (
+            <VFlex as="ul" alignItems="stretch" spacing="cmp-lg">
+              {notificationsConfig.map(
+                (noti, index) =>
+                  notificationsList.includes(index) && (
+                    <NotificationItem
+                      key={index}
+                      date={noti.date}
+                      heading={noti.heading}
+                      description={noti.description}
+                      buttonText={noti.buttonText}
+                      status={noti.status}
+                      closeOnClick={() =>
+                        setNotificationsList(
+                          notificationsList.filter((x) => x !== index),
+                        )
+                      }
+                    />
+                  ),
               )}
-              <Panel.Header.Close
-                size="sm"
-                onClick={() => setIsVisible(false)}
-                tooltip="Close this panel"
-              />
-            </>
-          ),
-          bordered: true,
-        }}
-        title="Notifications"
-      >
-        {notificationsList.length > 0 ? (
-          <VFlex as="ul" alignItems="stretch" spacing="cmp-lg">
-            {notificationsConfig.map(
-              (noti, index) =>
-                notificationsList.includes(index) && (
-                  <NotificationItem
-                    key={index}
-                    date={noti.date}
-                    heading={noti.heading}
-                    description={noti.description}
-                    buttonText={noti.buttonText}
-                    status={noti.status}
-                    closeOnClick={() =>
-                      setNotificationsList(
-                        notificationsList.filter((x) => x !== index),
-                      )
-                    }
-                  />
-                ),
-            )}
-          </VFlex>
-        ) : (
-          <Typography.Paragraph>
-            There are no notifications.
-          </Typography.Paragraph>
-        )}
-      </Panel>
-    </Popper>
+            </VFlex>
+          ) : (
+            <Typography.Paragraph>
+              There are no notifications.
+            </Typography.Paragraph>
+          )}
+        </Panel>
+      )}
+    </Popover>
   );
 };
