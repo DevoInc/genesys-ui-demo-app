@@ -171,6 +171,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           />
           <Menu.Item label="Preferences" icon="gi-settings_gear_preferences" />
           <Popover
+            appendTo={null}
             id="user-options-popover__theme"
             placement="left-start"
             modifiers={[
@@ -231,6 +232,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           />
           <Menu.Separator />
           <Popover
+            appendTo={null}
             id="user-options-popover__priority"
             placement="left-start"
             modifiers={[
@@ -321,6 +323,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           </Popover>
           <Menu.Separator />
           <Popover
+            appendTo={null}
             id="user-options-popover__domains"
             placement="left-start"
             modifiers={[
