@@ -8,7 +8,6 @@ import { GIExitLogoutDoorEmergencyOutside } from '@devoinc/genesys-icons';
 import {
   USER_OPTIONS_POPOVER_AVATAR_OFFSET,
   USER_OPTIONS_POPOVER_NESTED_OFFSET,
-  USER_OPTIONS_POPOVER_OFFSET,
   USER_OPTIONS_POPOVER_OFFSET_COMPACT,
 } from '../constants';
 
