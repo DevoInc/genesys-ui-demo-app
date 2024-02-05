@@ -44,19 +44,19 @@ const domainsConfig: {
     status: 'success',
   },
   {
-    name: 'demo@claro',
+    name: 'demo@customer',
     status: 'success',
   },
   {
-    name: 'elcorteingles_poc',
+    name: 'best_whishes_poc',
     status: 'success',
   },
   {
-    name: 'ntt@ntt',
+    name: 'customer@customer',
     status: 'warning',
   },
   {
-    name: 'prosegur_poc',
+    name: 'who_knows_poc',
     status: 'success',
   },
   {
@@ -64,7 +64,7 @@ const domainsConfig: {
     status: 'success',
   },
   {
-    name: 'test@f5-spain',
+    name: 'test@asap-spain',
     status: 'success',
   },
 ];
