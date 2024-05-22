@@ -14,7 +14,8 @@
     "build": "vite build && tsc --project tsconfig.json"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20",
+    "npm": ">=9"
   },
   "dependencies": {
     "@devoinc/genesys-base-styles": "^1.2.1",
