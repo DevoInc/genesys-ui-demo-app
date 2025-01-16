@@ -3,7 +3,21 @@ import { css, useTheme } from 'styled-components';
 
 import { useSchema } from '../../../providers/ThemeProvider';
 
-import { GIExitLogoutDoorEmergencyOutside } from '@devoinc/genesys-icons';
+import {
+  GIArrowsDirectionsLeftRight,
+  GIAttentionErrorAlertCautionFilled,
+  GICheckOkRoundedFilled,
+  GIDiamondPrizeAwardJewelleryRing,
+  GIErrorWarningDangerStopFilled,
+  GIExitLogoutDoorEmergencyOutside,
+  GIPaintBrush,
+  GISettingsGearPreferences,
+  GIUserProfileAvatarManMale,
+  GIVoiceLaudAnnouncementNews,
+  GIWeatherMoon,
+  GIWeatherSunSummer,
+  GIWorldEarthWorldwideInternationalLanguage,
+} from '@devoinc/genesys-icons';
 
 import {
   USER_OPTIONS_POPOVER_AVATAR_OFFSET,
@@ -70,9 +84,9 @@ const domainsConfig: {
 ];
 
 const STATUS_ICON_MAP = {
-  error: 'gi-error_warning_danger_stop_filled',
-  success: 'gi-check_ok_rounded_filled',
-  warning: 'gi-attention_error_alert_caution_filled',
+  error: <GIErrorWarningDangerStopFilled />,
+  success: <GICheckOkRoundedFilled />,
+  warning: <GIAttentionErrorAlertCautionFilled />,
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -115,7 +129,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           onClick={toggle}
           ref={ref}
           size={compact ? 'xs' : 'md'}
-          styles={css`
+          style={css`
             width: auto;
             height: auto;
             padding: ${compact ? '0.2rem' : '0.4rem'};
@@ -152,11 +166,9 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                   rick.sanchez@devo.com
                 </Typography.Paragraph>
                 <HFlex spacing="cmp-xxs" marginBottom="cmp-xs">
-                  <Icon
-                    iconId="gi-diamond_prize_award_jewellery_ring"
-                    size="xxs"
-                    colorScheme="weaker"
-                  />
+                  <Icon size="xxs" colorScheme="weaker">
+                    {<GIDiamondPrizeAwardJewelleryRing />}
+                  </Icon>
                   <Typography.Paragraph gutterBottom="0" colorScheme="weaker">
                     admin
                   </Typography.Paragraph>
@@ -167,9 +179,9 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           <Menu.Separator />
           <Menu.Item
             label="User profile"
-            icon="gi-user_profile_avatar_man_male"
+            icon={<GIUserProfileAvatarManMale />}
           />
-          <Menu.Item label="Preferences" icon="gi-settings_gear_preferences" />
+          <Menu.Item label="Preferences" icon={<GISettingsGearPreferences />} />
           <Popover
             appendTo={null}
             id="user-options-popover__theme"
@@ -186,7 +198,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
             {({ toggle, ref, isOpened }) => (
               <Menu.Item
                 label="Theme"
-                icon="gi-paint_brush"
+                icon={<GIPaintBrush />}
                 expandable
                 onClick={toggle}
                 ref={ref}
@@ -205,7 +217,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     state={schema === 'dark' ? 'selected' : 'enabled'}
                     onClick={() => setOpened(true)}
                     onChange={() => toggleSchema()}
-                    icon="gi-weather_moon"
+                    icon={<GIWeatherMoon />}
                     name="select-theme"
                   />
                   <Menu.Item
@@ -214,7 +226,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     state={schema === 'light' ? 'selected' : 'enabled'}
                     onClick={() => setOpened(true)}
                     onChange={() => toggleSchema()}
-                    icon="gi-weather_sun_summer"
+                    icon={<GIWeatherSunSummer />}
                     name="select-theme"
                   />
                 </Menu>
@@ -223,7 +235,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           </Popover>
           <Menu.Item
             label="What's new"
-            icon="gi-voice_laud_announcement_news"
+            icon={<GIVoiceLaudAnnouncementNews />}
             appendContent={
               <Flex alignItems="center" marginLeft="auto">
                 <Badge size="sm" colorScheme="success" />
@@ -256,7 +268,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     />
                   </Box>
                 }
-                icon="gi-arrows_directions_left_right"
+                icon={<GIArrowsDirectionsLeftRight />}
                 expandable
                 onClick={toggle}
                 ref={ref}
@@ -339,7 +351,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
               <Menu.Item
                 ref={ref}
                 label="Change domain"
-                icon="gi-world_earth_worldwide_international_language"
+                icon={<GIWorldEarthWorldwideInternationalLanguage />}
                 bottomContent={
                   <Typography.Heading size="h6">
                     {currentDomain}
@@ -381,10 +393,9 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                       <Menu.Item
                         label="waffleiron"
                         icon={
-                          <Icon
-                            iconId="gi-check_ok_rounded_filled"
-                            colorScheme="success-weak"
-                          />
+                          <Icon colorScheme="success-weak">
+                            {<GICheckOkRoundedFilled />}
+                          </Icon>
                         }
                         state="selected"
                       />
@@ -396,13 +407,14 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                             label={domain.name}
                             icon={
                               <Icon
-                                iconId={STATUS_ICON_MAP[domain.status]}
                                 colorScheme={
                                   domain.status === 'success'
                                     ? 'success-weak'
                                     : domain.status
                                 }
-                              />
+                              >
+                                {STATUS_ICON_MAP[domain.status]}
+                              </Icon>
                             }
                             state={
                               currentDomain === domain.name

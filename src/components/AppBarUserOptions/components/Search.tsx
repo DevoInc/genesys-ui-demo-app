@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-import { GISearchFindZoom } from '@devoinc/genesys-icons';
+import {
+  GIAlerts,
+  GIFlow,
+  GIGaugeDashboardFullFuel,
+  GISearchFindZoom,
+} from '@devoinc/genesys-icons';
 
 import {
   USER_OPTIONS_POPOVER_OFFSET,
@@ -8,6 +13,7 @@ import {
 } from '../constants';
 
 import {
+  Box,
   Chip,
   ChipGroup,
   Flex,
@@ -28,6 +34,7 @@ interface SearchProps extends AppBarUserOptionsProps {}
 
 export const Search: React.FC<SearchProps> = ({ compact }) => {
   const [isSearching, setIsSearching] = React.useState(false);
+  const tabsRef = React.useRef<HTMLDivElement>();
   const [activeTab, setActiveTab] = React.useState(0);
   return (
     <Popover
@@ -88,20 +95,24 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
           </Panel.Header>
           {!isSearching && (
             <Panel.Header as="div" size="sm" removeSpace>
-              <Tabs contained flex="1" marginBottom="cmp-xs">
-                <Tabs.Item
-                  label="Recent content"
-                  onClick={() => setActiveTab(0)}
-                  size="sm"
-                  state={activeTab === 0 ? 'selected' : undefined}
-                />
-                <Tabs.Item
-                  label="Recently browsed pages"
-                  onClick={() => setActiveTab(1)}
-                  size="sm"
-                  state={activeTab === 1 ? 'selected' : undefined}
-                />
-              </Tabs>
+              <Box flex="1" marginBottom="cmp-xs">
+                <Tabs contained>
+                  <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
+                    <Tabs.Item
+                      label="Recent content"
+                      onClick={() => setActiveTab(0)}
+                      size="sm"
+                      state={activeTab === 0 ? 'selected' : undefined}
+                    />
+                    <Tabs.Item
+                      label="Recently browsed pages"
+                      onClick={() => setActiveTab(1)}
+                      size="sm"
+                      state={activeTab === 1 ? 'selected' : undefined}
+                    />
+                  </Tabs.List>
+                </Tabs>
+              </Box>
             </Panel.Header>
           )}
           <Panel.Body size="sm">
@@ -130,7 +141,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                 <Menu cmpRole="nav">
                   <Menu.Item
                     href="#"
-                    icon="gi-gauge_dashboard_full_fuel"
+                    icon={<GIGaugeDashboardFullFuel />}
                     label="siem.logtrust.alerts.dispatched"
                     appendContent={
                       <Flex.Item marginLeft="auto">
@@ -142,7 +153,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                   />
                   <Menu.Item
                     href="#"
-                    icon="gi-search_find_zoom"
+                    icon={<GISearchFindZoom />}
                     label="siem.logtrust.web.activityAll"
                     appendContent={
                       <Flex.Item marginLeft="auto">
@@ -158,7 +169,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
               <Menu cmpRole="nav">
                 <Menu.Item
                   href="#"
-                  icon="gi-gauge_dashboard_full_fuel"
+                  icon={<GIGaugeDashboardFullFuel />}
                   label="siem.logtrust.alerts.dispatched"
                   appendContent={
                     <Flex.Item marginLeft="auto">
@@ -170,7 +181,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                 />
                 <Menu.Item
                   href="#"
-                  icon="gi-gauge_dashboard_full_fuel"
+                  icon={<GIGaugeDashboardFullFuel />}
                   label="DnsAnomalies_by10IP"
                   appendContent={
                     <Flex.Item marginLeft="auto">
@@ -182,7 +193,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                 />
                 <Menu.Item
                   href="#"
-                  icon="gi-flow"
+                  icon={<GIFlow />}
                   label="DevoManagedQuery"
                   appendContent={
                     <Flex.Item marginLeft="auto">
@@ -194,7 +205,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                 />
                 <Menu.Item
                   href="#"
-                  icon="gi-gauge_dashboard_full_fuel"
+                  icon={<GIGaugeDashboardFullFuel />}
                   label="Loxcope router"
                   appendContent={
                     <Flex.Item marginLeft="auto">
@@ -206,7 +217,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                 />
                 <Menu.Item
                   href="#"
-                  icon="gi-search_find_zoom"
+                  icon={<GISearchFindZoom />}
                   label="siem.logtrust.web.activityAll"
                   appendContent={
                     <Flex.Item marginLeft="auto">
@@ -218,7 +229,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                 />
                 <Menu.Item
                   href="#"
-                  icon="gi-alerts"
+                  icon={<GIAlerts />}
                   label="Apache too many byte range requests"
                   appendContent={
                     <Flex.Item marginLeft="auto">

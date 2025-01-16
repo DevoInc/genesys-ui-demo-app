@@ -17,7 +17,7 @@ export interface AppBarUserOptionsProps {
 export const AppBarUserOptions: React.FC<AppBarUserOptionsProps> = ({
   compact,
 }) => (
-  <HFlex marginLeft="auto" spacing={`cmp-${compact ? 'xs' : 'sm'}`} key="one">
+  <HFlex spacing={`cmp-${compact ? 'xs' : 'sm'}`} key="one">
     <Search compact={compact} />
     <Notifications compact={compact} />
     <HelpCenter compact={compact} />

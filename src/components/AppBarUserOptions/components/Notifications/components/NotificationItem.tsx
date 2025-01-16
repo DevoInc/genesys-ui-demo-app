@@ -11,6 +11,12 @@ import {
   Typography,
   VFlex,
 } from '@devoinc/genesys-ui';
+import {
+  GIAttentionErrorAlertCautionFilled,
+  GICheckOkRoundedFilled,
+  GIErrorWarningDangerStopFilled,
+  GIInfoRoundFilled,
+} from '@devoinc/genesys-icons';
 
 export interface NotificationItemProps {
   cause?: string;
@@ -23,10 +29,10 @@ export interface NotificationItemProps {
 }
 
 export const STATUS_ICON_MAP = {
-  error: 'gi-error_warning_danger_stop_filled',
-  info: 'gi-info_round_filled',
-  success: 'gi-check_ok_rounded_filled',
-  warning: 'gi-attention_error_alert_caution_filled',
+  error: <GIErrorWarningDangerStopFilled />,
+  info: <GIInfoRoundFilled />,
+  success: <GICheckOkRoundedFilled />,
+  warning: <GIAttentionErrorAlertCautionFilled />,
 };
 
 export const NotificationItem: React.FC<NotificationItemProps> = ({
@@ -41,11 +47,9 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   const colorScheme = status === 'success' ? 'success-weak' : status;
   return (
     <HFlex alignItems="flex-start" spacing="cmp-xs">
-      <Icon
-        iconId={STATUS_ICON_MAP[status]}
-        size="xxs"
-        colorScheme={colorScheme}
-      />
+      <Icon size="xxs" colorScheme={colorScheme}>
+        {STATUS_ICON_MAP[status]}
+      </Icon>
       <VFlex spacing="cmp-xxs" alignItems="stretch" flex="1">
         <HFlex
           justifyContent="space-between"

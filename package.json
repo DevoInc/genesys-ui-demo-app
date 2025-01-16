@@ -18,13 +18,14 @@
     "npm": ">=9"
   },
   "dependencies": {
-    "@devoinc/genesys-base-styles": "^1.2.1",
-    "@devoinc/genesys-brand-devo": "^6.2.0",
-    "@devoinc/genesys-icons": "^3.6.0",
-    "@devoinc/genesys-ui": "^4.2.0",
-    "@devoinc/genesys-ui-code": "^4.2.0",
-    "@devoinc/genesys-ui-datetime": "^4.2.0",
-    "@devoinc/genesys-ui-form": "^4.2.0",
+    "@devoinc/genesys-base-styles": "^2.0.1",
+    "@devoinc/genesys-brand-devo": "^8.1.1",
+    "@devoinc/genesys-icons": "^6.3.4",
+    "@devoinc/genesys-ui": "^16.3.0",
+    "@devoinc/genesys-ui-code": "^16.3.0",
+    "@devoinc/genesys-ui-color": "^16.3.0",
+    "@devoinc/genesys-ui-datetime": "^16.3.0",
+    "@devoinc/genesys-ui-upload": "^16.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.11"

@@ -10,6 +10,7 @@ import {
 import {
   Banner,
   Button,
+  Checkbox,
   Form,
   HFlex,
   Panel,
@@ -17,7 +18,6 @@ import {
   SelectControl,
   Typography,
 } from '@devoinc/genesys-ui';
-import { Checkbox } from '@devoinc/genesys-ui-form';
 
 import { AppBarUserOptionsProps } from '../AppBarUserOptions';
 
@@ -130,38 +130,41 @@ export const TimeZone: React.FC<TimeZoneProps> = ({ compact }) => {
           size="sm"
           title="Time zone configuration"
         >
-          <Form aria-label="Time zone configuration form">
-            <Checkbox
-              label="Set timezone automatically"
-              id="timezone-auto"
-              defaultChecked
-              onChange={() => setIsAuto(!isAuto)}
-            />
-            <SelectControl
-              aria-label="Select the timezone"
-              menuAppendToBody
-              isDisabled={isAuto}
-              options={[
-                { value: 1, label: 'Option one' },
-                { value: 2, label: 'Option two' },
-                { value: 4, label: 'Option four' },
-                { value: 5, label: 'Option five' },
-                { value: 6, label: 'Option six' },
-                { value: 7, label: 'Option seven' },
-              ]}
-              placeholder="CET - Europe/Madrid (UTC + 02:00)"
-            />
-            <img
-              src="/timezone-map.png"
-              alt="Timezone map"
-              style={{ width: '100%', height: 'auto' }}
-            />
-            <Banner
-              title="Your current timezone"
-              content="CET - Europe/Madrid, ES - 12:28:20 (+02:00)"
-              status="info"
-            />
-          </Form>
+          <Panel.Body>
+            <Form aria-label="Time zone configuration form">
+              <Checkbox
+                label="Set timezone automatically"
+                id="timezone-auto"
+                defaultChecked
+                onChange={() => setIsAuto(!isAuto)}
+              />
+              <SelectControl
+                aria-label="Select the timezone"
+                menuAppendToBody
+                isDisabled={isAuto}
+                options={[
+                  { value: 1, label: 'Option one' },
+                  { value: 2, label: 'Option two' },
+                  { value: 4, label: 'Option four' },
+                  { value: 5, label: 'Option five' },
+                  { value: 6, label: 'Option six' },
+                  { value: 7, label: 'Option seven' },
+                ]}
+                placeholder="CET - Europe/Madrid (UTC + 02:00)"
+              />
+              <img
+                src="/timezone-map.png"
+                alt="Timezone map"
+                style={{ width: '100%', height: 'auto' }}
+              />
+              <Banner
+                title="Your current timezone"
+                content="CET - Europe/Madrid, ES - 12:28:20 (+02:00)"
+                status="info"
+              />
+            </Form>
+          </Panel.Body>
+          <Panel.Footer />
         </Panel>
       )}
     </Popover>

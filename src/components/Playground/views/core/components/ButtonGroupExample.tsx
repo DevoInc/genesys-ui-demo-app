@@ -1,13 +1,19 @@
 import * as React from 'react';
+import {
+  GICustomDate,
+  GIHeartFull,
+  GIPinBookmark,
+  GIReloadRefreshUpdate,
+} from '@devoinc/genesys-icons';
 import { Button, ButtonGroup, IconButton } from '@devoinc/genesys-ui';
 
 export const ButtonGroupExample = () => {
   return (
     <ButtonGroup>
-      <IconButton icon='gi-custom_date' />
-      <IconButton icon='gi-reload_refresh_update' />
-      <IconButton icon='gi-pin_bookmark' />
-      <Button icon='gi-heart_full'>Add to favorites</Button>
+      <IconButton icon={<GICustomDate />} />
+      <IconButton icon={<GIReloadRefreshUpdate />} />
+      <IconButton icon={<GIPinBookmark />} />
+      <Button icon={<GIHeartFull />}>Add to favorites</Button>
     </ButtonGroup>
   );
 };

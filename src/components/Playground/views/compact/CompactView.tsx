@@ -7,19 +7,20 @@ import {
   Typography,
   VFlex,
 } from '@devoinc/genesys-ui';
+import { GIMenuAltVertical } from '@devoinc/genesys-icons';
 
 export const CompactView: React.FC = () => {
   return (
     <VFlex alignItems="stretch">
       <HFlex>
-        <Panel.Container flex="1">
+        <Panel flex="1">
           <Panel.Header
             actions={[
               <IconButton
                 key="weekly-active-users-widget-actions"
                 colorScheme="quiet"
                 size="sm"
-                icon="gi-menu_alt_vertical"
+                icon={<GIMenuAltVertical />}
               />,
             ]}
             bordered
@@ -34,15 +35,15 @@ export const CompactView: React.FC = () => {
               </Typography.Heading>
             </Flex>
           </Panel.Body>
-        </Panel.Container>
-        <Panel.Container flex="1">
+        </Panel>
+        <Panel flex="1">
           <Panel.Header
             actions={[
               <IconButton
                 key="daily-ingest-volume-widget-actions"
                 colorScheme="quiet"
                 size="sm"
-                icon="gi-menu_alt_vertical"
+                icon={<GIMenuAltVertical />}
               />,
             ]}
             bordered
@@ -57,15 +58,15 @@ export const CompactView: React.FC = () => {
               </Typography.Heading>
             </Flex>
           </Panel.Body>
-        </Panel.Container>
-        <Panel.Container flex="1">
+        </Panel>
+        <Panel flex="1">
           <Panel.Header
             actions={[
               <IconButton
                 key="data-search-query-widget-actions"
                 colorScheme="quiet"
                 size="sm"
-                icon="gi-menu_alt_vertical"
+                icon={<GIMenuAltVertical />}
               />,
             ]}
             bordered
@@ -80,17 +81,17 @@ export const CompactView: React.FC = () => {
               </Typography.Heading>
             </Flex>
           </Panel.Body>
-        </Panel.Container>
+        </Panel>
       </HFlex>
       <HFlex alignItems="flex-start">
-        <Panel.Container>
+        <Panel>
           <Panel.Header
             actions={[
               <IconButton
                 key="ingest-by-tech-widget-actions"
                 colorScheme="quiet"
                 size="sm"
-                icon="gi-menu_alt_vertical"
+                icon={<GIMenuAltVertical />}
               />,
             ]}
             bordered
@@ -105,15 +106,15 @@ export const CompactView: React.FC = () => {
               style={{ width: '100%', height: 'auto' }}
             />
           </Panel.Body>
-        </Panel.Container>
-        <Panel.Container>
+        </Panel>
+        <Panel>
           <Panel.Header
             actions={[
               <IconButton
                 key="resource-usage-widget-actions"
                 colorScheme="quiet"
                 size="sm"
-                icon="gi-menu_alt_vertical"
+                icon={<GIMenuAltVertical />}
               />,
             ]}
             bordered
@@ -128,7 +129,7 @@ export const CompactView: React.FC = () => {
               style={{ width: '100%', height: 'auto' }}
             />
           </Panel.Body>
-        </Panel.Container>
+        </Panel>
       </HFlex>
     </VFlex>
   );

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { HFlex, Icon, Typography, VFlex } from '@devoinc/genesys-ui';
+import { GIAtomNuclearLearningPhysics } from '@devoinc/genesys-icons';
 
 export const IconExample = () => (
-  <HFlex spacing='layout-sm' alignItems='flex-end'>
+  <HFlex spacing="layout-sm" alignItems="flex-end">
     {[
       'xxxxs',
       'xxxs',
@@ -16,9 +17,11 @@ export const IconExample = () => (
       'xxxl',
       'xxxxl',
     ].map((size) => (
-      <VFlex key={size} alignItems='center'>
-        <Icon size={size} iconId='gi-atom_nuclear_learning_physics' />
-        <Typography.Caption textAlign='center' size='xxs'>
+      <VFlex key={size} alignItems="center">
+        <Icon size={size} colorScheme="base">
+          <GIAtomNuclearLearningPhysics />
+        </Icon>
+        <Typography.Caption textAlign="center" size="xxs">
           {size.toUpperCase()}
         </Typography.Caption>
       </VFlex>

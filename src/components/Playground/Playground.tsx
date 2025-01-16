@@ -7,20 +7,20 @@ import { CodeView } from './views/code/CodeView';
 import { CompactView } from './views/compact/CompactView';
 
 export interface PlaygroundProps {
-  selectedTab: string;
+  selectedTab: number;
 }
 
 export const Playground: React.FC<PlaygroundProps> = ({ selectedTab }) => {
   switch (selectedTab) {
-    case 'Core':
+    case 0:
       return <CoreView />;
-    case 'Form':
+    case 1:
       return <FormView />;
-    case 'Datetime':
+    case 2:
       return <DatetimeView />;
-    case 'Code':
+    case 3:
       return <CodeView />;
-    case 'Compact AppBar':
+    case 4:
       return <CompactView />;
     default:
       return <CoreView />;

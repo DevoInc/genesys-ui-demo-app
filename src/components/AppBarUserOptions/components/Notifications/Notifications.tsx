@@ -111,7 +111,7 @@ export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
               text={compact ? undefined : notificationsList.length.toString()}
               size={compact ? 'sm' : 'md'}
               colorScheme="info"
-              styles={css`
+              style={css`
                 position: absolute;
                 width: ${compact && '0.8rem'};
                 height: ${compact && '0.8rem'};
@@ -124,63 +124,57 @@ export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
         </IconButton>
       )}
       {({ setOpened }) => (
-        <Panel
-          elevation="activated"
-          width="44rem"
-          maxHeight="48rem"
-          closeSettings={{
-            onClick: () => setOpened(false),
-            tooltip: 'Close this panel',
-          }}
-          headerSettings={{
-            renderContent: (
-              <>
-                <Panel.Header.Heading title="Notifications" size="sm" />
-                {notificationsList.length > 0 && (
-                  <>
-                    <Button size="sm" onClick={() => setNotificationsList([])}>
-                      Clear all
-                    </Button>
-                    <Divider vertical height="2.4rem" margin="0 0 0 cmp-md" />
-                  </>
+        <Panel size="sm" elevation="activated" width="44rem" maxHeight="48rem">
+          <Panel.Header
+            bordered
+            title="Notifications"
+            closeSettings={{
+              onClick: () => setOpened(false),
+              tooltip: 'Close this panel',
+            }}
+            actions={
+              notificationsList.length > 0 ? (
+                <>
+                  <Button
+                    key={1}
+                    size="sm"
+                    onClick={() => setNotificationsList([])}
+                  >
+                    Clear all
+                  </Button>
+                  <Divider vertical height="2.4rem" margin="0 0 0 cmp-md" />
+                </>
+              ) : null
+            }
+          />
+          <Panel.Body>
+            {notificationsList.length > 0 ? (
+              <VFlex as="ul" alignItems="stretch" spacing="cmp-lg">
+                {notificationsConfig.map(
+                  (noti, index) =>
+                    notificationsList.includes(index) && (
+                      <NotificationItem
+                        key={index}
+                        date={noti.date}
+                        heading={noti.heading}
+                        description={noti.description}
+                        buttonText={noti.buttonText}
+                        status={noti.status}
+                        closeOnClick={() =>
+                          setNotificationsList(
+                            notificationsList.filter((x) => x !== index),
+                          )
+                        }
+                      />
+                    ),
                 )}
-                <Panel.Header.Close
-                  size="sm"
-                  onClick={() => setOpened(false)}
-                  tooltip="Close this panel"
-                />
-              </>
-            ),
-            bordered: true,
-          }}
-          title="Notifications"
-        >
-          {notificationsList.length > 0 ? (
-            <VFlex as="ul" alignItems="stretch" spacing="cmp-lg">
-              {notificationsConfig.map(
-                (noti, index) =>
-                  notificationsList.includes(index) && (
-                    <NotificationItem
-                      key={index}
-                      date={noti.date}
-                      heading={noti.heading}
-                      description={noti.description}
-                      buttonText={noti.buttonText}
-                      status={noti.status}
-                      closeOnClick={() =>
-                        setNotificationsList(
-                          notificationsList.filter((x) => x !== index),
-                        )
-                      }
-                    />
-                  ),
-              )}
-            </VFlex>
-          ) : (
-            <Typography.Paragraph>
-              There are no notifications.
-            </Typography.Paragraph>
-          )}
+              </VFlex>
+            ) : (
+              <Typography.Paragraph>
+                There are no notifications.
+              </Typography.Paragraph>
+            )}
+          </Panel.Body>
         </Panel>
       )}
     </Popover>

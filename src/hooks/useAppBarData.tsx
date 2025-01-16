@@ -1,63 +1,74 @@
 import * as React from 'react';
-import { Button, HFlex, Tabs, AppBarProps } from '@devoinc/genesys-ui';
+import {
+  Button,
+  HFlex,
+  Tabs,
+  AppBarProps,
+  useTabsAccessibility,
+} from '@devoinc/genesys-ui';
 import { useSchema } from '../providers/ThemeProvider';
 import { AppBarUserOptions } from '../components/AppBarUserOptions';
+import { GIArrowLeft } from '@devoinc/genesys-icons';
 
 type UseAppBarData = () => {
   compactMode: boolean;
-  tabItems: AppBarProps['tabItems'];
-  selectedTab: string;
+  tabs: React.ReactNode;
+  activeTab: number;
   actions: AppBarProps['actions'];
   customContent: AppBarProps['customContent'];
 };
 
 export const useAppBarData: UseAppBarData = () => {
   const { schema, toggleSchema } = useSchema();
-  const [selectedTab, setSelectedTab] = React.useState('Core');
-  const compactMode = selectedTab === 'Compact AppBar';
+  const tabsRef = React.useRef<HTMLDivElement>();
+  const [activeTab, setActiveTab] = React.useState(0);
+  useTabsAccessibility({ activeTab, tabsRef });
+  const compactMode = activeTab === 4;
 
-  const tabItems = React.useMemo(
+  const tabs = React.useMemo(
     () =>
-      compactMode
-        ? undefined
-        : [
+      compactMode ? undefined : (
+        <Tabs>
+          <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
             <Tabs.Item
               key="core"
               label="Core"
-              onClick={() => setSelectedTab('Core')}
-              state={selectedTab === 'Core' ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(0)}
+              state={activeTab === 0 ? 'selected' : 'enabled'}
               size="lg"
-            />,
+            />
             <Tabs.Item
               key="form"
               label="Form"
-              onClick={() => setSelectedTab('Form')}
-              state={selectedTab === 'Form' ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(1)}
+              state={activeTab === 1 ? 'selected' : 'enabled'}
               size="lg"
-            />,
+            />
             <Tabs.Item
               key="datetime"
               label="Datetime"
-              onClick={() => setSelectedTab('Datetime')}
-              state={selectedTab === 'Datetime' ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(2)}
+              state={activeTab === 2 ? 'selected' : 'enabled'}
               size="lg"
-            />,
+            />
             <Tabs.Item
               key="code"
               label="Code"
-              onClick={() => setSelectedTab('Code')}
-              state={selectedTab === 'Code' ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(3)}
+              state={activeTab === 3 ? 'selected' : 'enabled'}
               size="lg"
-            />,
+            />
             <Tabs.Item
               key="compact"
               label="Compact AppBar"
-              onClick={() => setSelectedTab('Compact AppBar')}
-              state={selectedTab === 'Compact AppBar' ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(4)}
+              state={activeTab === 4 ? 'selected' : 'enabled'}
               size="lg"
-            />,
-          ],
-    [compactMode, selectedTab],
+            />
+          </Tabs.List>
+        </Tabs>
+      ),
+    [compactMode, activeTab],
   );
 
   const actions = React.useMemo(() => {
@@ -69,17 +80,12 @@ export const useAppBarData: UseAppBarData = () => {
        * must be either controlled or uncontrolled (specify either the checked prop,
        * or the defaultChecked prop, but not both).
        */
-      <HFlex
-        marginLeft="auto"
-        spacing={`cmp-${compactMode ? 'xs' : 'sm'}`}
-        key="one"
-      >
+      <HFlex spacing={`cmp-${compactMode ? 'xs' : 'sm'}`} key="one">
         {compactMode && (
           <Button
             colorScheme="quiet"
-            icon="gi-arrow_left"
-            size="md"
-            onClick={() => setSelectedTab('Core')}
+            icon={<GIArrowLeft />}
+            onClick={() => setActiveTab(0)}
           >
             Back to Core
           </Button>
@@ -94,11 +100,11 @@ export const useAppBarData: UseAppBarData = () => {
         </Button>
       </HFlex>,
     ];
-  }, [compactMode, schema, selectedTab, toggleSchema]);
+  }, [compactMode, schema, activeTab, toggleSchema]);
 
   const customContent = React.useMemo(() => {
     return <AppBarUserOptions compact={compactMode} />;
   }, [compactMode]);
 
-  return { selectedTab, tabItems, actions, compactMode, customContent };
+  return { activeTab, tabs, actions, compactMode, customContent };
 };

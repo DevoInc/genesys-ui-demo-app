@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { Radio, RadioGroup } from '@devoinc/genesys-ui-form';
+import { Radio, RadioGroup } from '@devoinc/genesys-ui';
 
 export const RadioGroupExample = () => (
   <RadioGroup
-    direction='column'
+    direction="column"
     hasLegendLabelFormat={true}
-    legend='Radio group legend'
-    legendPosition='top'
-    status='base'
+    legend="Radio group legend"
+    legendPosition="top"
+    status="base"
   >
     <>
       <Radio
-        id='radio-one-id'
-        name='Name for radio'
-        label='Radio one'
+        id="radio-one-id"
+        name="Name for radio"
+        label="Radio one"
         defaultChecked
       />
-      <Radio id='radio-two-id' name='Name for radio' label='Radio two' />
-      <Radio id='radio-three-id' name='Name for radio' label='Radio three' />
+      <Radio id="radio-two-id" name="Name for radio" label="Radio two" />
+      <Radio id="radio-three-id" name="Name for radio" label="Radio three" />
     </>
   </RadioGroup>
 );

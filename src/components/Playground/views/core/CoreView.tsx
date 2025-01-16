@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Button,
   ButtonGroup,
-  DevoLogoLoader,
+  Loader,
   Flex,
   Typography,
   TagGroup,
@@ -29,7 +29,7 @@ export const CoreView: React.FC = () => {
           <Button colorScheme="accent-high">Ding</Button>
           <Button colorScheme="accent-high">Dong</Button>
         </ButtonGroup>
-        <DevoLogoLoader />
+        <Loader.DevoLogoSpinner />
       </Flex>
       <Flex>
         <PopoverExample />

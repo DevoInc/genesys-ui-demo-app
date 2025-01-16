@@ -9,24 +9,33 @@ import {
   IconButton,
   InputControl,
 } from '@devoinc/genesys-ui';
-import { Switch } from '@devoinc/genesys-ui-form';
+import { Switch } from '@devoinc/genesys-ui';
 
 import { useAppBarData } from './hooks';
 import { Playground } from './components';
+import { GIMenuAltVertical } from '@devoinc/genesys-icons';
 
 export const App = () => {
-  const { actions, tabItems, selectedTab, compactMode, customContent } =
-    useAppBarData();
+  const {
+    actions,
+    //tabs,
+    activeTab,
+    compactMode,
+    customContent,
+  } = useAppBarData();
   return (
-    <AppLayout.Container>
+    <AppLayout>
       <AppLayout.Bar>
         <AppBar
           compact={compactMode}
-          customContent={customContent}
           heading="Genesys UI Consumer"
-          actions={compactMode ? undefined : actions}
-          tabItems={tabItems}
-        />
+          //tabs={tabs}
+        >
+          <HFlex marginLeft="auto">
+            {compactMode ? undefined : actions}
+            {customContent}
+          </HFlex>
+        </AppBar>
         {compactMode && (
           <>
             <Divider colorScheme="weak" margin="0" />
@@ -40,7 +49,7 @@ export const App = () => {
                   />
                 </HFlex.Item>
                 <Button colorScheme="accent">Add new widget</Button>
-                <IconButton icon="gi-menu_alt_vertical" />
+                <IconButton icon={<GIMenuAltVertical />} />
                 <Divider vertical margin="0 cmp-xs" />
                 <Switch label="Edit mode" id="edit-mode-control" />
               </HFlex>
@@ -52,16 +61,16 @@ export const App = () => {
       </AppLayout.Bar>
       <AppLayout.Content>
         {compactMode ? (
-          <Playground selectedTab={selectedTab} />
+          <Playground selectedTab={activeTab} />
         ) : (
           <PanelSection
-            title={selectedTab}
-            subtitle={`Sample of components from ${selectedTab}`}
+            title={activeTab}
+            subtitle={`Sample of components from ${activeTab}`}
           >
-            <Playground selectedTab={selectedTab} />
+            <Playground selectedTab={activeTab} />
           </PanelSection>
         )}
       </AppLayout.Content>
-    </AppLayout.Container>
+    </AppLayout>
   );
 };

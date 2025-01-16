@@ -6,7 +6,7 @@ import ThemeProvider from './providers/ThemeProvider';
 import { App } from './App';
 
 // Devo's Base styles
-import '@devoinc/genesys-base-styles/dist/styles.css';
+import '@devoinc/genesys-base-styles/dist/css/styles.css';
 // Devo's Icons font
 import '@devoinc/genesys-icons/dist/gi-styles.css';
 
@@ -15,5 +15,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <ThemeProvider>
       <App />
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

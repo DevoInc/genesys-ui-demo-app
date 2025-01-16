@@ -3,6 +3,11 @@ import { useTheme } from 'styled-components';
 
 import {
   GIAboutQuestionFaqHelp,
+  GIChatMessageCommentBubbleTyping,
+  GIDocumentFilePaperText,
+  GIErrorWarningAlertAttention,
+  GIIdea,
+  GIVoiceLaudAnnouncementNews,
   GIWindowNewExternFullScreenMaximize,
 } from '@devoinc/genesys-icons';
 
@@ -102,7 +107,7 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
               <Menu.Item
                 unlimitedHeight
                 href="#"
-                icon="gi-document_file_paper_text"
+                icon={<GIDocumentFilePaperText />}
                 label={
                   <Typography.Heading size="h6" as="span">
                     Edit a custom finder
@@ -122,7 +127,7 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
               <Menu.Item
                 unlimitedHeight
                 href="#"
-                icon="gi-document_file_paper_text"
+                icon={<GIDocumentFilePaperText />}
                 label={
                   <Typography.Heading size="h6" as="span">
                     Create a custom finder
@@ -144,17 +149,17 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
           <Panel.Footer as="div" size="sm" bordered>
             <Flex.Item flex="1">
               <Menu>
-                <Menu.Item icon="gi-idea" label="First steps with Devo" />
+                <Menu.Item icon={<GIIdea />} label="First steps with Devo" />
                 <Menu.Item
-                  icon="gi-chat_message_comment_bubble_typing"
+                  icon={<GIChatMessageCommentBubbleTyping />}
                   label="Contact support"
                 />
                 <Menu.Item
-                  icon="gi-voice_laud_announcement_news"
+                  icon={<GIVoiceLaudAnnouncementNews />}
                   label="Give Feedback"
                 />
                 <Menu.Item
-                  icon="gi-error_warning_alert_attention"
+                  icon={<GIErrorWarningAlertAttention />}
                   label="Report a bug"
                 />
                 <Menu.Item
@@ -167,7 +172,7 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
                   label={
                     <Typography.Paragraph
                       as="span"
-                      styles={`color: ${linkColor}`}
+                      style={`color: ${linkColor}`}
                     >
                       <Typography.Strong>
                         Visit Documentation website
