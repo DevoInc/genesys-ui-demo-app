@@ -1,75 +1,102 @@
 import * as React from 'react';
-import {
-  Button,
-  ButtonGroup,
-  Loader,
-  Flex,
-  Typography,
-  TagGroup,
-  Tag,
-} from '@devoinc/genesys-ui';
+import { Typography, VFlex, HFlex } from '@devoinc/genesys-ui';
 import {
   ContentSwitcherExample,
   PopoverExample,
   StepperExample,
-  TabsContainerExample,
+  TabsExample,
   IconExample,
   ToastExample,
-  Select2ControlExample,
-  SwitchControlExample,
-  ButtonGroupExample,
+  InlineMessageExample,
+  FloatingMessageExample,
+  BannerExample,
+  BadgeExample,
+  KeyValueExample,
+  LoaderExample,
+  ButtonExample,
+  IconButtonExample,
+  PartitionsExample,
+  ProgressBarExample,
+  StatusMessageExample,
+  TagExample,
+  UserInfoExample,
+  ModalExample,
+  PanelExample,
+  AvatarExample,
+  ThumbnailExample,
+  AppBarExample,
+  CollapseExample,
+  LinkExample,
+  MenuExample,
+  PaginationExample,
+  TypographyExample,
+  SplitLayoutExample,
 } from './components';
 
 export const CoreView: React.FC = () => {
   return (
-    <Flex flexDirection="column" gap="cmp-xxl">
-      <Flex justifyContent="space-between">
-        <ContentSwitcherExample />
-        <ButtonGroup>
-          <Button colorScheme="accent-high">Ding</Button>
-          <Button colorScheme="accent-high">Dong</Button>
-        </ButtonGroup>
-        <Loader.DevoLogoSpinner />
-      </Flex>
-      <Flex>
-        <PopoverExample />
-      </Flex>
-      <Typography.Heading size="h1">
-        Sample of components from{' '}
-        <Typography.CodeInline>genesys-ui</Typography.CodeInline> package
-      </Typography.Heading>
-      <Typography.Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at purus
-        lacinia, sollicitudin eros sit amet, tempor nulla. Nullam felis odio,
-        tincidunt et nulla ut, pharetra vulputate velit. Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Nullam at purus lacinia, sollicitudin
-        eros sit amet, tempor nulla. Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Nullam at purus lacinia, sollicitudin eros sit amet,
-        tempor nulla. Nullam felis odio, tincidunt et nulla ut, pharetra
-        vulputate velit. Lorem ipsum dolor sit amet, consectetur adipiscing
-        elit. Nullam at purus lacinia, sollicitudin eros sit amet, tempor nulla.
-      </Typography.Paragraph>
-      <Flex justifyContent="space-around">
-        <Flex>
-          <StepperExample />
-        </Flex>
-        <TagGroup labelPosition="left">
-          <Tag text="Category one" />
-          <Tag colorScheme="secondary" text="Category two" />
-          <Tag colorScheme="primary" text="Category three" />
-          <Tag colorScheme="secondary" text="Category four" />
-        </TagGroup>
-      </Flex>
-      <TabsContainerExample />
-      <Flex justifyContent="flex-end">
-        <IconExample />
-      </Flex>
-      <ToastExample />
-      <ButtonGroupExample />
-      <Flex justifyContent="space-between">
-        <Select2ControlExample />
-        <SwitchControlExample />
-      </Flex>
-    </Flex>
+    <VFlex spacing="cmp-xxl">
+      <HFlex spacing="layout-xl" alignItems="flex-start">
+        <VFlex flex="1 1 50%" spacing="layout-md">
+          <VFlex>
+            <Typography.Heading size="h4">Actions</Typography.Heading>
+            <VFlex spacing="layout-sm">
+              <ButtonExample />
+              <IconButtonExample />
+            </VFlex>
+          </VFlex>
+          <VFlex>
+            <Typography.Heading size="h4">Feedback</Typography.Heading>
+            <VFlex spacing="layout-sm">
+              <BadgeExample />
+              <BannerExample />
+              <FloatingMessageExample />
+              <IconExample />
+              <InlineMessageExample />
+              <KeyValueExample />
+              <LoaderExample />
+              <PartitionsExample />
+              <ProgressBarExample />
+              <StatusMessageExample />
+              <TagExample />
+              <ToastExample />
+              <UserInfoExample />
+              <TypographyExample />
+            </VFlex>
+          </VFlex>
+        </VFlex>
+        <VFlex flex="1 1 50%" spacing="layout-md">
+          <VFlex>
+            <Typography.Heading size="h4">Layout</Typography.Heading>
+            <VFlex spacing="layout-sm">
+              <ModalExample />
+              <PanelExample />
+              <SplitLayoutExample />
+              <PopoverExample />
+            </VFlex>
+          </VFlex>
+          <VFlex>
+            <Typography.Heading size="h4">Media</Typography.Heading>
+            <VFlex spacing="layout-sm">
+              <AvatarExample />
+              <ThumbnailExample />
+            </VFlex>
+          </VFlex>
+          <VFlex>
+            <Typography.Heading size="h4">Navigation</Typography.Heading>
+            <VFlex spacing="layout-sm">
+              <AppBarExample />
+              <CollapseExample />
+              <ContentSwitcherExample />
+              <LinkExample />
+              <MenuExample />
+              <PaginationExample />
+              <StepperExample />
+              <TabsExample />
+            </VFlex>
+          </VFlex>
+        </VFlex>
+      </HFlex>
+    </VFlex>
   );
 };

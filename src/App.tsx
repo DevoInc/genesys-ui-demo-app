@@ -16,23 +16,14 @@ import { Playground } from './components';
 import { GIMenuAltVertical } from '@devoinc/genesys-icons';
 
 export const App = () => {
-  const {
-    actions,
-    //tabs,
-    activeTab,
-    compactMode,
-    customContent,
-  } = useAppBarData();
+  const { actions, tabs, activeTab, compactMode, customContent } =
+    useAppBarData();
   return (
     <AppLayout>
       <AppLayout.Bar>
-        <AppBar
-          compact={compactMode}
-          heading="Genesys UI Consumer"
-          //tabs={tabs}
-        >
+        <AppBar compact={compactMode} heading="Genesys UI Consumer" tabs={tabs}>
           <HFlex marginLeft="auto">
-            {compactMode ? undefined : actions}
+            {actions}
             {customContent}
           </HFlex>
         </AppBar>
@@ -53,7 +44,6 @@ export const App = () => {
                 <Divider vertical margin="0 cmp-xs" />
                 <Switch label="Edit mode" id="edit-mode-control" />
               </HFlex>
-              {actions}
             </AppBar>
             <Divider colorScheme="weak" margin="0" />
           </>
@@ -61,13 +51,13 @@ export const App = () => {
       </AppLayout.Bar>
       <AppLayout.Content>
         {compactMode ? (
-          <Playground selectedTab={activeTab} />
+          <Playground selectedTab={activeTab?.id} />
         ) : (
           <PanelSection
-            title={activeTab}
-            subtitle={`Sample of components from ${activeTab}`}
+            title={activeTab?.label}
+            subtitle={`Sample of components from ${activeTab?.label}`}
           >
-            <Playground selectedTab={activeTab} />
+            <Playground selectedTab={activeTab?.id} />
           </PanelSection>
         )}
       </AppLayout.Content>

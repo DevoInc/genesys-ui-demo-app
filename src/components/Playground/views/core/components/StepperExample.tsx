@@ -1,5 +1,13 @@
-import { Button, HFlex, Stepper, StepperProps } from '@devoinc/genesys-ui';
 import * as React from 'react';
+import {
+  Button,
+  HFlex,
+  Stepper,
+  type StepperProps,
+  VFlex,
+} from '@devoinc/genesys-ui';
+import { GIAngleLeft, GIAngleRight } from '@devoinc/genesys-icons';
+import { DefaultHeading } from '../../../components';
 
 const initialSteps: StepperProps['steps'] = [
   { name: 'OPT_1', label: 'Option 1', status: 'pending' },
@@ -31,18 +39,21 @@ export const StepperExample = () => {
 
   React.useEffect(
     () => setSteps((preSteps) => updateSteps(preSteps, current)),
-    [current]
+    [current],
   );
 
   return (
-    <>
-      <Stepper steps={steps} id='Stepper' aria-label='Stepper' />
-      <HFlex marginLeft='cmp-xxxl'>
-        <Button onClick={goPrevious}>Previous</Button>
-        <Button onClick={goNext} colorScheme='accent'>
+    <VFlex>
+      <DefaultHeading>Stepper</DefaultHeading>
+      <Stepper steps={steps} id="Stepper" aria-label="Stepper" />
+      <HFlex>
+        <Button icon={<GIAngleLeft />} onClick={goPrevious}>
+          Previous
+        </Button>
+        <Button icon={<GIAngleRight />} onClick={goNext} colorScheme="accent">
           {buttonLabel}
         </Button>
       </HFlex>
-    </>
+    </VFlex>
   );
 };

@@ -13,56 +13,65 @@ import { GIArrowLeft } from '@devoinc/genesys-icons';
 type UseAppBarData = () => {
   compactMode: boolean;
   tabs: React.ReactNode;
-  activeTab: number;
+  activeTab: { id: number; label: string };
   actions: AppBarProps['actions'];
   customContent: AppBarProps['customContent'];
 };
 
 export const useAppBarData: UseAppBarData = () => {
+  const data = [
+    { id: 0, label: 'Core' },
+    { id: 1, label: 'Form' },
+    { id: 2, label: 'DateTime' },
+    { id: 3, label: 'Code' },
+    { id: 4, label: 'Compact AppBar' },
+  ];
+  const isEqualObj = (obj1: object, obj2: object) =>
+    JSON.stringify(obj1) === JSON.stringify(obj2);
   const { schema, toggleSchema } = useSchema();
   const tabsRef = React.useRef<HTMLDivElement>();
-  const [activeTab, setActiveTab] = React.useState(0);
-  useTabsAccessibility({ activeTab, tabsRef });
-  const compactMode = activeTab === 4;
+  const [activeTab, setActiveTab] = React.useState(data[0]);
+  useTabsAccessibility({ activeTab: activeTab?.id, tabsRef });
+  const compactMode = isEqualObj(activeTab, data[4]);
 
   const tabs = React.useMemo(
     () =>
       compactMode ? undefined : (
-        <Tabs>
-          <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
+        <Tabs colorScheme="primary">
+          <Tabs.List activeTabIndex={activeTab.id} ref={tabsRef}>
             <Tabs.Item
               key="core"
               label="Core"
-              onClick={() => setActiveTab(0)}
-              state={activeTab === 0 ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(data[0])}
+              state={isEqualObj(activeTab, data[0]) ? 'selected' : 'enabled'}
               size="lg"
             />
             <Tabs.Item
               key="form"
               label="Form"
-              onClick={() => setActiveTab(1)}
-              state={activeTab === 1 ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(data[1])}
+              state={isEqualObj(activeTab, data[1]) ? 'selected' : 'enabled'}
               size="lg"
             />
             <Tabs.Item
               key="datetime"
               label="Datetime"
-              onClick={() => setActiveTab(2)}
-              state={activeTab === 2 ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(data[2])}
+              state={isEqualObj(activeTab, data[2]) ? 'selected' : 'enabled'}
               size="lg"
             />
             <Tabs.Item
               key="code"
               label="Code"
-              onClick={() => setActiveTab(3)}
-              state={activeTab === 3 ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(data[3])}
+              state={isEqualObj(activeTab, data[3]) ? 'selected' : 'enabled'}
               size="lg"
             />
             <Tabs.Item
               key="compact"
               label="Compact AppBar"
-              onClick={() => setActiveTab(4)}
-              state={activeTab === 4 ? 'selected' : 'enabled'}
+              onClick={() => setActiveTab(data[4])}
+              state={isEqualObj(activeTab, data[4]) ? 'selected' : 'enabled'}
               size="lg"
             />
           </Tabs.List>
@@ -83,15 +92,16 @@ export const useAppBarData: UseAppBarData = () => {
       <HFlex spacing={`cmp-${compactMode ? 'xs' : 'sm'}`} key="one">
         {compactMode && (
           <Button
+            size="sm"
             colorScheme="quiet"
             icon={<GIArrowLeft />}
-            onClick={() => setActiveTab(0)}
+            onClick={() => setActiveTab(data[0])}
           >
             Back to Core
           </Button>
         )}
         <Button
-          size="md"
+          size={compactMode ? 'sm' : undefined}
           key="1"
           selectionScheme="multiple"
           onChange={toggleSchema}

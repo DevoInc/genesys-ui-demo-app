@@ -1,4 +1,4 @@
-import { ContentSwitcher } from '@devoinc/genesys-ui';
+import { ContentSwitcher, VFlex } from '@devoinc/genesys-ui';
 import * as React from 'react';
 import {
   GIActivity,
@@ -6,6 +6,7 @@ import {
   GIGaugeDashboardFullFuel,
   GIHeartFull,
 } from '@devoinc/genesys-icons';
+import { DefaultHeading } from '../../../components';
 
 export const options = [
   {
@@ -32,22 +33,24 @@ export const options = [
 
 export const ContentSwitcherExample = () => {
   const [selection, setSelection] = React.useState('second');
-  console.info(selection);
   return (
-    <ContentSwitcher size="md">
-      {options.map((option) => (
-        <ContentSwitcher.Item
-          id={option.id}
-          icon={option.icon}
-          key={option.id}
-          state={option.id === selection ? 'selected' : 'enabled'}
-          onChange={() => {
-            setSelection(option.id);
-          }}
-        >
-          {option.label}
-        </ContentSwitcher.Item>
-      ))}
-    </ContentSwitcher>
+    <VFlex>
+      <DefaultHeading>Content Switcher</DefaultHeading>
+      <ContentSwitcher size="md">
+        {options.map((option) => (
+          <ContentSwitcher.Item
+            id={option.id}
+            icon={option.icon}
+            key={option.id}
+            state={option.id === selection ? 'selected' : 'enabled'}
+            onChange={() => {
+              setSelection(option.id);
+            }}
+          >
+            {option.label}
+          </ContentSwitcher.Item>
+        ))}
+      </ContentSwitcher>
+    </VFlex>
   );
 };
