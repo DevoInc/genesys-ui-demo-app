@@ -18,7 +18,7 @@ export const DateTimeRangePickerExample = () => {
       weekDays={['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']}
       value={value}
       onChange={(newValue) => {
-        setValue(newValue);
+        setValue(newValue as number[]);
       }}
       presets={getDefaultPresets(now)}
       realTime={'activated'}

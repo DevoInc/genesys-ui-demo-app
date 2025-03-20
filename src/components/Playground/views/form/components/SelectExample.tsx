@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Select, SelectControlProps, TSelectOption } from '@devoinc/genesys-ui';
+
+import { Select, SelectControlProps } from '@devoinc/genesys-ui';
 
 export const SelectExample = () => {
   const [value, setValue] = React.useState<SelectControlProps['value']>();
@@ -13,7 +14,11 @@ export const SelectExample = () => {
         { value: 2, label: 'Option two' },
         { value: 3, label: 'Option three' },
       ]}
-      onChange={(opt: TSelectOption) => setValue(opt.value)}
+      onChange={(opt) => {
+        // TODO: Review select value types
+        // @ts-ignore
+        setValue(opt.value);
+      }}
       value={value}
     />
   );

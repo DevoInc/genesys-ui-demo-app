@@ -62,7 +62,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
           aria-controls="appbar-search-dropdown"
           aria-haspopup="true"
           aria-expanded={isOpened}
-          ref={ref}
+          ref={ref as React.Ref<HTMLButtonElement>}
           onClick={toggle}
           state={isOpened ? 'expanded' : undefined}
         >
@@ -77,7 +77,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
           <Panel.Header
             title="Search Devo"
             closeSettings={{
-              onClick: () => setOpened(false),
+              onClick: () => setOpened?.(false),
               tooltip: 'Close this panel',
             }}
             size="sm"
@@ -97,7 +97,10 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
             <Panel.Header as="div" size="sm" removeSpace>
               <Box flex="1" marginBottom="cmp-xs">
                 <Tabs contained>
-                  <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
+                  <Tabs.List
+                    activeTabIndex={activeTab}
+                    ref={tabsRef as React.Ref<HTMLDivElement>}
+                  >
                     <Tabs.Item
                       label="Recent content"
                       onClick={() => setActiveTab(0)}

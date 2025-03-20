@@ -5,12 +5,18 @@ import { DefaultHeading } from '../../../components';
 export const TabsExample = () => {
   const tabsRef = React.useRef<HTMLDivElement>();
   const [activeTab, setActiveTab] = React.useState(0);
-  useTabsAccessibility({ activeTab, tabsRef });
+  useTabsAccessibility({
+    activeTab,
+    tabsRef: tabsRef as React.MutableRefObject<HTMLDivElement>,
+  });
   return (
     <VFlex>
       <DefaultHeading>Tabs</DefaultHeading>
       <Tabs contained aria-label="DemoTabs">
-        <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
+        <Tabs.List
+          activeTabIndex={activeTab}
+          ref={tabsRef as React.Ref<HTMLDivElement>}
+        >
           <Tabs.Item
             label="First tab"
             onClick={() => setActiveTab(0)}

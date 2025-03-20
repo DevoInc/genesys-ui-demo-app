@@ -45,7 +45,9 @@ export const FieldsCombinerExample = () => (
             aria-expanded={isOpened}
             aria-haspopup={true}
             onClick={toggle}
-            ref={ref}
+            // TODO: Restore ref on FiledsCombiner.IconButton props
+            // @ts-ignore
+            ref={ref as React.Ref<HTMLButtonElement>}
             state={isOpened ? 'expanded' : undefined}
             tooltip="Open options"
             colorScheme={'accent'}

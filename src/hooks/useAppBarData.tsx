@@ -1,15 +1,17 @@
 import * as React from 'react';
+
 import { Button, HFlex, Tabs, useTabsAccessibility } from '@devoinc/genesys-ui';
+import { GIArrowLeft } from '@devoinc/genesys-icons';
+
 import { useSchema } from '../providers/ThemeProvider';
 import { AppBarUserOptions } from '../components/AppBarUserOptions';
-import { GIArrowLeft } from '@devoinc/genesys-icons';
 
 type UseAppBarData = () => {
   compactMode: boolean;
   tabs: React.ReactNode;
   activeTab: { id: number; label: string };
-  actions: AppBarProps['actions'];
-  customContent: AppBarProps['customContent'];
+  actions: React.ReactNode;
+  customContent: React.ReactNode;
 };
 
 export const useAppBarData: UseAppBarData = () => {
@@ -25,7 +27,10 @@ export const useAppBarData: UseAppBarData = () => {
   const { schema, toggleSchema } = useSchema();
   const tabsRef = React.useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = React.useState(data[0]);
-  useTabsAccessibility({ activeTab: activeTab?.id, tabsRef });
+  useTabsAccessibility({
+    activeTab: activeTab?.id,
+    tabsRef: tabsRef as React.MutableRefObject<HTMLDivElement>,
+  });
   const compactMode = isEqualObj(activeTab, data[4]);
 
   const tabs = React.useMemo(

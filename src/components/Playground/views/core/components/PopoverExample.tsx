@@ -14,7 +14,7 @@ export const PopoverExample = () => {
             aria-expanded={isOpened}
             aria-haspopup={true}
             onClick={toggle}
-            ref={ref}
+            ref={ref as React.Ref<HTMLButtonElement>}
           >
             TriggerElement
           </Button>

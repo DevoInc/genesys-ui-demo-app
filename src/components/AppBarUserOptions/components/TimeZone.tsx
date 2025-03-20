@@ -21,7 +21,6 @@ import {
 
 import { AppBarUserOptionsProps } from '../AppBarUserOptions';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TimeZoneProps extends AppBarUserOptionsProps {}
 
 export const TimeZone: React.FC<TimeZoneProps> = ({ compact }) => {
@@ -53,7 +52,7 @@ export const TimeZone: React.FC<TimeZoneProps> = ({ compact }) => {
           size={compact ? 'xs' : 'lg'}
           state={isOpened ? 'expanded' : undefined}
           onClick={toggle}
-          ref={ref}
+          ref={ref as React.Ref<HTMLButtonElement>}
         >
           <HFlex spacing="cmp-xxs">
             <GITimeZone
@@ -74,62 +73,20 @@ export const TimeZone: React.FC<TimeZoneProps> = ({ compact }) => {
       )}
       {({ setOpened }) => (
         <Panel
-          elevation="activated"
-          width="60rem"
-          id="appbar-time-zone-dropdown"
-          footerSettings={{
-            actions: [
-              <Button
-                key="timezone-btn-1"
-                colorScheme="quiet"
-                onClick={() => setOpened(false)}
-              >
-                Cancel
-              </Button>,
-              <Button
-                key="timezone-btn-2"
-                colorScheme="accent"
-                onClick={() => setOpened(false)}
-              >
-                Save changes
-              </Button>,
-            ],
-            renderContent: (
-              <HFlex justifyContent="space-between" flex="1">
-                <Checkbox
-                  label="Apply changes only to this session"
-                  id="timezone-apply"
-                  onChange={() => setIsAuto(!isAuto)}
-                />
-                <HFlex justifyContent="flex-end">
-                  <Button
-                    key="timezone-btn-1"
-                    colorScheme="quiet"
-                    onClick={() => setOpened(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    key="timezone-btn-2"
-                    colorScheme="accent"
-                    onClick={() => setOpened(false)}
-                  >
-                    Save changes
-                  </Button>
-                </HFlex>
-              </HFlex>
-            ),
-          }}
-          headerSettings={{
-            bordered: true,
-          }}
-          closeSettings={{
-            onClick: () => setOpened(false),
-            tooltip: 'Close this panel',
-          }}
+          elevation={'activated'}
+          width={'60rem'}
+          id={'appbar-time-zone-dropdown'}
           size="sm"
-          title="Time zone configuration"
         >
+          <Panel.Header
+            bordered
+            closeSettings={{
+              onClick: () => setOpened?.(false),
+              tooltip: 'Close this panel',
+            }}
+          >
+            Time zone configuration
+          </Panel.Header>
           <Panel.Body>
             <Form aria-label="Time zone configuration form">
               <Checkbox
@@ -164,24 +121,31 @@ export const TimeZone: React.FC<TimeZoneProps> = ({ compact }) => {
               />
             </Form>
           </Panel.Body>
-          <Panel.Footer
-            actions={[
-              <Button
-                key="timezone-btn-1"
-                colorScheme="quiet"
-                onClick={() => setOpened?.(false)}
-              >
-                Cancel
-              </Button>,
-              <Button
-                key="timezone-btn-2"
-                colorScheme="accent"
-                onClick={() => setOpened?.(false)}
-              >
-                Save changes
-              </Button>,
-            ]}
-          />
+          <Panel.Footer>
+            <HFlex justifyContent="space-between" flex="1">
+              <Checkbox
+                label="Apply changes only to this session"
+                id="timezone-apply"
+                onChange={() => setIsAuto(!isAuto)}
+              />
+              <HFlex justifyContent="flex-end">
+                <Button
+                  key="timezone-btn-1"
+                  colorScheme="quiet"
+                  onClick={() => setOpened?.(false)}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  key="timezone-btn-2"
+                  colorScheme="accent"
+                  onClick={() => setOpened?.(false)}
+                >
+                  Save changes
+                </Button>
+              </HFlex>
+            </HFlex>
+          </Panel.Footer>
         </Panel>
       )}
     </Popover>

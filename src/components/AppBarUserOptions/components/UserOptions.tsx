@@ -127,7 +127,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           hasDropdown
           colorScheme="quiet"
           onClick={toggle}
-          ref={ref}
+          ref={ref as React.Ref<HTMLButtonElement>}
           size={compact ? 'xs' : 'md'}
           style={css`
             width: auto;
@@ -201,7 +201,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                 icon={<GIPaintBrush />}
                 expandable
                 onClick={toggle}
-                ref={ref}
+                ref={ref as React.Ref<HTMLButtonElement>}
                 state={isOpened ? 'expanded' : 'enabled'}
                 aria-expanded={isOpened}
                 aria-controls="appbar-theme-dropdown"
@@ -215,7 +215,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     selectionScheme="single"
                     label="Dark"
                     state={schema === 'dark' ? 'selected' : 'enabled'}
-                    onClick={() => setOpened(true)}
+                    onClick={() => setOpened?.(true)}
                     onChange={() => toggleSchema()}
                     icon={<GIWeatherMoon />}
                     name="select-theme"
@@ -224,7 +224,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     selectionScheme="single"
                     label="Light"
                     state={schema === 'light' ? 'selected' : 'enabled'}
-                    onClick={() => setOpened(true)}
+                    onClick={() => setOpened?.(true)}
                     onChange={() => toggleSchema()}
                     icon={<GIWeatherSunSummer />}
                     name="select-theme"
@@ -271,7 +271,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                 icon={<GIArrowsDirectionsLeftRight />}
                 expandable
                 onClick={toggle}
-                ref={ref}
+                ref={ref as React.Ref<HTMLButtonElement>}
                 state={isOpened ? 'expanded' : 'enabled'}
                 aria-expanded={isOpened}
                 aria-controls="appbar-query-priority-dropdown"
@@ -285,7 +285,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     selectionScheme="single"
                     label="Low"
                     state={priority.name === 'Low' ? 'selected' : 'enabled'}
-                    onClick={() => setOpened(true)}
+                    onClick={() => setOpened?.(true)}
                     onChange={() =>
                       setPriority({ name: 'Low', colorScheme: 'data-blue' })
                     }
@@ -297,7 +297,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     selectionScheme="single"
                     label="Normal"
                     state={priority.name === 'Normal' ? 'selected' : 'enabled'}
-                    onClick={() => setOpened(true)}
+                    onClick={() => setOpened?.(true)}
                     onChange={() =>
                       setPriority({ name: 'Normal', colorScheme: 'success' })
                     }
@@ -309,7 +309,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     selectionScheme="single"
                     label="High"
                     state={priority.name === 'High' ? 'selected' : 'enabled'}
-                    onClick={() => setOpened(true)}
+                    onClick={() => setOpened?.(true)}
                     onChange={() =>
                       setPriority({ name: 'High', colorScheme: 'warning' })
                     }
@@ -321,7 +321,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                     selectionScheme="single"
                     label="Maximum"
                     state={priority.name === 'Maximum' ? 'selected' : 'enabled'}
-                    onClick={() => setOpened(true)}
+                    onClick={() => setOpened?.(true)}
                     onChange={() =>
                       setPriority({ name: 'Maximum', colorScheme: 'error' })
                     }
@@ -349,7 +349,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           >
             {({ ref, toggle, isOpened }) => (
               <Menu.Item
-                ref={ref}
+                ref={ref as React.Ref<HTMLButtonElement>}
                 label="Change domain"
                 icon={<GIWorldEarthWorldwideInternationalLanguage />}
                 bottomContent={
@@ -372,7 +372,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                   size="sm"
                   title="Change domain"
                   closeSettings={{
-                    onClick: () => setOpened(false),
+                    onClick: () => setOpened?.(false),
                     tooltip: 'Close this panel',
                   }}
                 />

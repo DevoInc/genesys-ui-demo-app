@@ -99,7 +99,7 @@ export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
             setIsBadgeVisible(false);
             toggle(event);
           }}
-          ref={ref}
+          ref={ref as React.Ref<HTMLButtonElement>}
           state={isOpened ? 'expanded' : undefined}
         >
           <GIBellRingerAlarmSound
@@ -135,16 +135,19 @@ export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
             actions={
               notificationsList.length > 0
                 ? [
-                    <>
-                      <Button
-                        key={1}
-                        size="sm"
-                        onClick={() => setNotificationsList([])}
-                      >
-                        Clear all
-                      </Button>
-                      <Divider vertical height="2.4rem" margin="0 0 0 cmp-md" />
-                    </>,
+                    <Button
+                      key={'clear-all'}
+                      size="sm"
+                      onClick={() => setNotificationsList([])}
+                    >
+                      Clear all
+                    </Button>,
+                    <Divider
+                      key={'divider'}
+                      vertical
+                      height="2.4rem"
+                      margin="0 0 0 cmp-md"
+                    />,
                   ]
                 : undefined
             }

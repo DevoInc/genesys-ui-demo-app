@@ -53,7 +53,7 @@ export const MenuExample = () => {
             aria-expanded={isOpened}
             aria-haspopup={true}
             onClick={toggle}
-            ref={ref}
+            ref={ref as React.Ref<HTMLButtonElement>}
             state={isOpened ? 'expanded' : undefined}
           >
             Show dropdown
@@ -84,7 +84,7 @@ export const MenuExample = () => {
                   expandable
                   label="Option 4"
                   onClick={toggle}
-                  ref={ref}
+                  ref={ref as React.Ref<HTMLButtonElement>}
                   state={isOpened ? 'expanded' : undefined}
                 />
               )}
@@ -113,7 +113,7 @@ export const MenuExample = () => {
                         expandable
                         label="Option 4.3.1"
                         onClick={toggle}
-                        ref={ref}
+                        ref={ref as React.Ref<HTMLButtonElement>}
                         state={isOpened ? 'expanded' : undefined}
                       />
                     )}

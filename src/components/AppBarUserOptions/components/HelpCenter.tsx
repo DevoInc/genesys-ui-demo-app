@@ -61,7 +61,7 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
           aria-haspopup="true"
           aria-expanded={isOpened}
           onClick={toggle}
-          ref={ref}
+          ref={ref as React.Ref<HTMLButtonElement>}
           size={compact ? 'sm' : 'lg'}
           state={isOpened ? 'expanded' : undefined}
         >

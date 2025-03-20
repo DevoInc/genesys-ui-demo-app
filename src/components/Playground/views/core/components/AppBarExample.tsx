@@ -5,7 +5,10 @@ import { DefaultHeading } from '../../../components';
 const TabsCmp = () => {
   const tabsRef = React.useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = React.useState(0);
-  useTabsAccessibility({ activeTab, tabsRef });
+  useTabsAccessibility({
+    activeTab,
+    tabsRef: tabsRef as React.MutableRefObject<HTMLDivElement>,
+  });
   return (
     <Tabs colorScheme="primary">
       <Tabs.List activeTabIndex={activeTab} ref={tabsRef}>
