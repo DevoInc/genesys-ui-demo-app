@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  Button,
-  HFlex,
-  Tabs,
-  AppBarProps,
-  useTabsAccessibility,
-} from '@devoinc/genesys-ui';
+import { Button, HFlex, Tabs, useTabsAccessibility } from '@devoinc/genesys-ui';
 import { useSchema } from '../providers/ThemeProvider';
 import { AppBarUserOptions } from '../components/AppBarUserOptions';
 import { GIArrowLeft } from '@devoinc/genesys-icons';
@@ -29,7 +23,7 @@ export const useAppBarData: UseAppBarData = () => {
   const isEqualObj = (obj1: object, obj2: object) =>
     JSON.stringify(obj1) === JSON.stringify(obj2);
   const { schema, toggleSchema } = useSchema();
-  const tabsRef = React.useRef<HTMLDivElement>();
+  const tabsRef = React.useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = React.useState(data[0]);
   useTabsAccessibility({ activeTab: activeTab?.id, tabsRef });
   const compactMode = isEqualObj(activeTab, data[4]);

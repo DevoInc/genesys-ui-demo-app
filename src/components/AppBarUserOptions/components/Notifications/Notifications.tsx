@@ -129,22 +129,24 @@ export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
             bordered
             title="Notifications"
             closeSettings={{
-              onClick: () => setOpened(false),
+              onClick: () => setOpened?.(false),
               tooltip: 'Close this panel',
             }}
             actions={
-              notificationsList.length > 0 ? (
-                <>
-                  <Button
-                    key={1}
-                    size="sm"
-                    onClick={() => setNotificationsList([])}
-                  >
-                    Clear all
-                  </Button>
-                  <Divider vertical height="2.4rem" margin="0 0 0 cmp-md" />
-                </>
-              ) : null
+              notificationsList.length > 0
+                ? [
+                    <>
+                      <Button
+                        key={1}
+                        size="sm"
+                        onClick={() => setNotificationsList([])}
+                      >
+                        Clear all
+                      </Button>
+                      <Divider vertical height="2.4rem" margin="0 0 0 cmp-md" />
+                    </>,
+                  ]
+                : undefined
             }
           />
           <Panel.Body>

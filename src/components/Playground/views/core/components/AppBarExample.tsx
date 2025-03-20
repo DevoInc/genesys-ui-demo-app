@@ -3,7 +3,7 @@ import { VFlex, AppBar, useTabsAccessibility, Tabs } from '@devoinc/genesys-ui';
 import { DefaultHeading } from '../../../components';
 
 const TabsCmp = () => {
-  const tabsRef = React.useRef<HTMLDivElement>();
+  const tabsRef = React.useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = React.useState(0);
   useTabsAccessibility({ activeTab, tabsRef });
   return (

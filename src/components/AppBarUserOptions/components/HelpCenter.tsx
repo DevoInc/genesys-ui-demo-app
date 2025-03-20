@@ -30,8 +30,7 @@ import {
 
 import { AppBarUserOptionsProps } from '../AppBarUserOptions';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface HelpCenterProps extends AppBarUserOptionsProps {}
+export interface HelpCenterProps extends AppBarUserOptionsProps {}
 
 export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
   const theme = useTheme();
@@ -77,7 +76,7 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
           <Panel.Header
             title="Help center"
             closeSettings={{
-              onClick: () => setOpened(false),
+              onClick: () => setOpened?.(false),
               tooltip: 'Close this panel',
             }}
             size="sm"
@@ -197,7 +196,7 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
                   size="sm"
                   key="help-center-btn-1"
                   colorScheme="quiet"
-                  onClick={() => setOpened(false)}
+                  onClick={() => setOpened?.(false)}
                 >
                   Privacy policy
                 </Button>
@@ -205,7 +204,7 @@ export const HelpCenter: React.FC<HelpCenterProps> = ({ compact }) => {
                   size="sm"
                   key="help-center-btn-2"
                   colorScheme="quiet"
-                  onClick={() => setOpened(false)}
+                  onClick={() => setOpened?.(false)}
                 >
                   Terms of service
                 </Button>

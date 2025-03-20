@@ -1,0 +1,11 @@
+{
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-inner-declaration": "error",
+    "no-console": "error",
+    "no-useless-spread": "off",
+    "no-useless-fallback-in-spread": "off"
+  }
+}

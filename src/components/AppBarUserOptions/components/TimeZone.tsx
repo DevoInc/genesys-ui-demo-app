@@ -164,7 +164,24 @@ export const TimeZone: React.FC<TimeZoneProps> = ({ compact }) => {
               />
             </Form>
           </Panel.Body>
-          <Panel.Footer />
+          <Panel.Footer
+            actions={[
+              <Button
+                key="timezone-btn-1"
+                colorScheme="quiet"
+                onClick={() => setOpened?.(false)}
+              >
+                Cancel
+              </Button>,
+              <Button
+                key="timezone-btn-2"
+                colorScheme="accent"
+                onClick={() => setOpened?.(false)}
+              >
+                Save changes
+              </Button>,
+            ]}
+          />
         </Panel>
       )}
     </Popover>
