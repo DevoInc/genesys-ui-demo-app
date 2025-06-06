@@ -11,7 +11,7 @@ import {
   Menu,
   type MenuItemProps,
 } from '@devoinc/genesys-ui';
-import { GIBookmarkTagSolid } from '@devoinc/genesys-icons';
+import { GIBookmarkTag, GIBookmarkTagSolid } from '@devoinc/genesys-icons';
 import { StyledDomainItemActions } from './StyledDomainItemActions';
 
 export interface DomainItemProps extends Omit<MenuItemProps, 'label'> {
@@ -30,6 +30,7 @@ export const DomainItem: React.FC<DomainItemProps> = ({
   label,
   onSetAsDefault,
   defaultDomain,
+  state,
   ...menuItemProps
 }) => {
   const theme = useTheme();
@@ -66,7 +67,6 @@ export const DomainItem: React.FC<DomainItemProps> = ({
         selectionScheme="single"
         href={href}
         isItem={false}
-        quiet
         icon={
           <Icon
             colorScheme={
@@ -81,6 +81,7 @@ export const DomainItem: React.FC<DomainItemProps> = ({
             {icon || STATUS_ICON_MAP[domainState]}
           </Icon>
         }
+        state={active ? 'active' : state}
         label={label}
         tooltip="Change to this domain"
       />
@@ -92,7 +93,7 @@ export const DomainItem: React.FC<DomainItemProps> = ({
             justifyContent="center"
             width={theme.cmp.button.size.square.xs}
             height={theme.cmp.button.size.square.xs}
-            tooltip="Domain set as default"
+            tooltip="Default domain"
           >
             <Icon size="xxxs">
               <GIBookmarkTagSolid />
@@ -100,7 +101,7 @@ export const DomainItem: React.FC<DomainItemProps> = ({
           </Flex>
         ) : (
           <IconButton
-            icon={<GIBookmarkTagSolid />}
+            icon={<GIBookmarkTag />}
             size="xs"
             colorScheme="quiet-blend"
             selectionScheme="single"
@@ -108,7 +109,7 @@ export const DomainItem: React.FC<DomainItemProps> = ({
               setMessageVisible(true);
               onSetAsDefault?.();
             }}
-            tooltip="Set domain as default"
+            tooltip="Use this domain by default when signing in"
           />
         )}
       </StyledDomainItemActions>

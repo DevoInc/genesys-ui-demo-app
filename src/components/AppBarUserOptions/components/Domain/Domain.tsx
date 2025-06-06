@@ -60,7 +60,7 @@ export const Domain: React.FC<DomainProps> = ({ compact }) => {
       ]}
     >
       {({ toggle, ref, isOpened }) => (
-        <Box maxWidth="12.4rem">
+        <Box width="12.4rem">
           <Button
             colorScheme="quiet"
             aria-controls="appbar-domain-dropdown"
@@ -70,7 +70,8 @@ export const Domain: React.FC<DomainProps> = ({ compact }) => {
             state={isOpened ? 'expanded' : undefined}
             onClick={toggle}
             ref={ref as React.Ref<HTMLButtonElement>}
-            tooltip="Change domain"
+            style={{ justifyContent: 'flex-start' }}
+            tooltip={`Current domain '${currentDomain}' - Open domains manager`}
             wide
           >
             <HFlex spacing="cmp-xxs">
