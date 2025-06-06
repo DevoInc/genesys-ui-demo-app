@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from 'styled-components';
 
 import {
   Box,
@@ -45,9 +46,18 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
   status,
 }) => {
   const colorScheme = status === 'success' ? 'success-weak' : status;
+  const theme = useTheme();
+  const iconSize = 'xxs';
+  const paragraphSize = 'md';
   return (
     <HFlex alignItems="flex-start" spacing="cmp-xs">
-      <Icon size="xxs" colorScheme={colorScheme}>
+      <Icon
+        size={iconSize}
+        colorScheme={colorScheme}
+        style={{
+          marginTop: `calc((${theme.alias.typographies.typo.lineHeight.body[paragraphSize]} - ${theme.cmp.icon.size.square[iconSize]}) / 2)`,
+        }}
+      >
         {STATUS_ICON_MAP[status]}
       </Icon>
       <VFlex spacing="cmp-xxs" alignItems="stretch" flex="1">
@@ -58,18 +68,17 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
         >
           <VFlex spacing="cmp-xxs">
             <HFlex spacing="cmp-xxs" alignItems="align-center">
-              <Typography.Heading size="h6">
+              <Typography.Paragraph colorScheme="stronger" size={paragraphSize}>
                 {heading}{' '}
                 <Typography.Paragraph
                   as="span"
-                  gutterBottom="0"
                   size="xs"
-                  colorScheme="weak"
+                  colorScheme="weaker"
                   truncateLine={1}
                 >
                   · {date}
                 </Typography.Paragraph>
-              </Typography.Heading>
+              </Typography.Paragraph>
             </HFlex>
           </VFlex>
           <IconButtonRemove
@@ -79,11 +88,11 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
           />
         </HFlex>
         <VFlex spacing="0">
-          <Typography.Paragraph size="sm" gutterBottom="0">
+          <Typography.Paragraph size="sm" colorScheme="weak">
             {description}
           </Typography.Paragraph>
           {cause && (
-            <Typography.Paragraph size="sm" gutterBottom="0">
+            <Typography.Paragraph size="sm">
               <Typography.Strong>Cause: </Typography.Strong>
               {cause}
             </Typography.Paragraph>

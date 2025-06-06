@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, VFlex, HFlex } from '@devoinc/genesys-ui';
+import { Typography, VFlex } from '@devoinc/genesys-ui';
 import {
   ContentSwitcherExample,
   PopoverExample,
@@ -35,68 +35,82 @@ import {
 
 export const CoreView: React.FC = () => {
   return (
-    <VFlex spacing="cmp-xxl">
-      <HFlex spacing="layout-xl" alignItems="flex-start">
-        <VFlex flex="1 1 50%" spacing="layout-md">
-          <VFlex>
-            <Typography.Heading size="h4">Actions</Typography.Heading>
-            <VFlex spacing="layout-sm">
-              <ButtonExample />
-              <IconButtonExample />
-            </VFlex>
-          </VFlex>
-          <VFlex>
-            <Typography.Heading size="h4">Feedback</Typography.Heading>
-            <VFlex spacing="layout-sm">
-              <BadgeExample />
-              <BannerExample />
-              <FloatingMessageExample />
-              <IconExample />
-              <InlineMessageExample />
-              <KeyValueExample />
-              <LoaderExample />
-              <PartitionsExample />
-              <ProgressBarExample />
-              <StatusMessageExample />
-              <TagExample />
-              <ToastExample />
-              <UserInfoExample />
-              <TypographyExample />
-            </VFlex>
+    <VFlex spacing="cmp-xxl" maxWidth="80rem">
+      <VFlex flex="1 1 50%" spacing="layout-md">
+        <VFlex>
+          <Typography.Heading size="h4" id="actions">
+            Actions
+          </Typography.Heading>
+          <VFlex spacing="layout-sm">
+            <ButtonExample />
+            <IconButtonExample />
           </VFlex>
         </VFlex>
-        <VFlex flex="1 1 50%" spacing="layout-md">
-          <VFlex>
-            <Typography.Heading size="h4">Layout</Typography.Heading>
-            <VFlex spacing="layout-sm">
-              <ModalExample />
-              <PanelExample />
-              <SplitLayoutExample />
-              <PopoverExample />
-            </VFlex>
-          </VFlex>
-          <VFlex>
-            <Typography.Heading size="h4">Media</Typography.Heading>
-            <VFlex spacing="layout-sm">
-              <AvatarExample />
-              <ThumbnailExample />
-            </VFlex>
-          </VFlex>
-          <VFlex>
-            <Typography.Heading size="h4">Navigation</Typography.Heading>
-            <VFlex spacing="layout-sm">
-              <AppBarExample />
-              <CollapseExample />
-              <ContentSwitcherExample />
-              <LinkExample />
-              <MenuExample />
-              <PaginationExample />
-              <StepperExample />
-              <TabsExample />
-            </VFlex>
+        <VFlex>
+          <Typography.Heading size="h4" id="feedback">
+            Feedback
+          </Typography.Heading>
+          <VFlex spacing="layout-sm">
+            <BadgeExample />
+            <BannerExample />
+            <FloatingMessageExample />
+            <IconExample />
+            <InlineMessageExample />
+            <KeyValueExample />
+            <LoaderExample />
+            <PartitionsExample />
+            <ProgressBarExample />
+            <StatusMessageExample />
+            <TagExample />
+            <ToastExample />
+            <UserInfoExample />
+            <TypographyExample />
           </VFlex>
         </VFlex>
-      </HFlex>
+      </VFlex>
+      <VFlex>
+        <Typography.Heading size="h4" id="typography">
+          Typography
+        </Typography.Heading>
+        <TypographyExample />
+      </VFlex>
+      <VFlex spacing="layout-md">
+        <VFlex>
+          <Typography.Heading size="h4" id="layout">
+            Layout
+          </Typography.Heading>
+          <VFlex spacing="layout-sm">
+            <ModalExample />
+            <PanelExample />
+            <SplitLayoutExample />
+            <PopoverExample />
+          </VFlex>
+        </VFlex>
+        <VFlex>
+          <Typography.Heading size="h4" id="media">
+            Media
+          </Typography.Heading>
+          <VFlex spacing="layout-sm">
+            <AvatarExample />
+            <ThumbnailExample />
+          </VFlex>
+        </VFlex>
+        <VFlex>
+          <Typography.Heading size="h4" id="navigation">
+            Navigation
+          </Typography.Heading>
+          <VFlex spacing="layout-sm">
+            <AppBarExample />
+            <CollapseExample />
+            <ContentSwitcherExample />
+            <LinkExample />
+            <MenuExample />
+            <PaginationExample />
+            <StepperExample />
+            <TabsExample />
+          </VFlex>
+        </VFlex>
+      </VFlex>
     </VFlex>
   );
 };

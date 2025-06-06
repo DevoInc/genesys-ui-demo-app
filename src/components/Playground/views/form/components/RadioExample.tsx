@@ -10,7 +10,7 @@ export const RadioExample = () => (
     </VFlex>
     <VFlex spacing="cmp-xs">
       <DefaultHeading>Radio</DefaultHeading>
-      <Radio id="radio-example" label="Checkbox example label" />
+      <Radio id="radio-example" label="Radio example label" />
     </VFlex>
     <VFlex spacing="0">
       <DefaultHeading>Radio Group</DefaultHeading>

@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { Typography, VFlex } from '@devoinc/genesys-ui';
-import { DefaultHeading } from '../../../components';
 import { loremShort } from '../../../../../helpers';
 
 export const TypographyExample = () => (
   <VFlex maxWidth="60%">
-    <DefaultHeading>Typography</DefaultHeading>
     <Typography.Heading size="hero-lg">Heading Hero lg</Typography.Heading>
     <Typography.Heading size="hero-md">Heading Hero md</Typography.Heading>
     <Typography.Heading size="hero-sm">Heading Hero sm</Typography.Heading>

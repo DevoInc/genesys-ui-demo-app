@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'styled-components';
 
-import { GIBellRingerAlarmSound } from '@devoinc/genesys-icons';
+import { GIBellRingerAlarmSound, GINoData } from '@devoinc/genesys-icons';
 
 import {
   Badge,
@@ -10,7 +10,7 @@ import {
   IconButton,
   Panel,
   Popover,
-  Typography,
+  StatusMessage,
   VFlex,
 } from '@devoinc/genesys-ui';
 
@@ -175,9 +175,11 @@ export const Notifications: React.FC<NotificationsProps> = ({ compact }) => {
                 )}
               </VFlex>
             ) : (
-              <Typography.Paragraph>
-                There are no notifications.
-              </Typography.Paragraph>
+              <StatusMessage
+                icon={<GINoData />}
+                title="All caught up!"
+                description="You don't have any notification."
+              />
             )}
           </Panel.Body>
         </Panel>

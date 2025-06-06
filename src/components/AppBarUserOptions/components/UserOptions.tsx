@@ -5,18 +5,15 @@ import { useSchema } from '../../../providers/ThemeProvider';
 
 import {
   GIArrowsDirectionsLeftRight,
-  GIAttentionErrorAlertCautionFilled,
-  GICheckOkRoundedFilled,
   GIDiamondPrizeAwardJewelleryRing,
-  GIErrorWarningDangerStopFilled,
   GIExitLogoutDoorEmergencyOutside,
   GIPaintBrush,
   GISettingsGearPreferences,
+  GITimeZone,
   GIUserProfileAvatarManMale,
   GIVoiceLaudAnnouncementNews,
   GIWeatherMoon,
   GIWeatherSunSummer,
-  GIWorldEarthWorldwideInternationalLanguage,
 } from '@devoinc/genesys-icons';
 
 import {
@@ -28,15 +25,19 @@ import {
 import {
   Avatar,
   Badge,
+  Banner,
   Box,
+  Button,
+  Checkbox,
   Flex,
+  Form,
   HFlex,
   Icon,
   IconButton,
-  InputControl,
   Menu,
   Panel,
   Popover,
+  SelectControl,
   Tag,
   TagProps,
   Typography,
@@ -49,58 +50,18 @@ export interface PriorityProps {
   colorScheme: TagProps['colorScheme'];
 }
 
-const domainsConfig: {
-  name: string;
-  status: 'success' | 'warning' | 'error';
-}[] = [
-  {
-    name: 'datacontroltest',
-    status: 'success',
-  },
-  {
-    name: 'demo@customer',
-    status: 'success',
-  },
-  {
-    name: 'best_whishes_poc',
-    status: 'success',
-  },
-  {
-    name: 'customer@customer',
-    status: 'warning',
-  },
-  {
-    name: 'who_knows_poc',
-    status: 'success',
-  },
-  {
-    name: 'waffleiron',
-    status: 'success',
-  },
-  {
-    name: 'test@asap-spain',
-    status: 'success',
-  },
-];
-
-const STATUS_ICON_MAP = {
-  error: <GIErrorWarningDangerStopFilled />,
-  success: <GICheckOkRoundedFilled />,
-  warning: <GIAttentionErrorAlertCautionFilled />,
-};
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface UserOptionsProps extends AppBarUserOptionsProps {}
 
 export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
   const theme = useTheme();
-  const [isSearching, setIsSearching] = React.useState(false);
+  const [timeZoneAuto, setTimeZoneAuto] = React.useState(true);
   const [priority, setPriority] = React.useState<PriorityProps>({
     name: 'Normal',
     colorScheme: 'success',
   });
-  const [currentDomain, setCurrentDomain] = React.useState('waffleiron');
   const { schema, toggleSchema } = useSchema();
+  const avatarSrc = 'https://i.pravatar.cc/150?img=65';
   return (
     <Popover
       id="user-options-popover"
@@ -141,7 +102,7 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
               size={compact ? 'xxxs' : 'sm'}
               name="Rick Sanchez"
               variant="circle"
-              imageSrc={compact ? undefined : 'https://i.pravatar.cc/300'}
+              imageSrc={compact ? undefined : avatarSrc}
               bordered={!compact}
               colorScheme={compact ? 'info' : undefined}
             />
@@ -156,20 +117,20 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
                 size="lg"
                 name="Rick Sanchez"
                 variant="circle"
-                imageSrc="https://i.pravatar.cc/300"
+                imageSrc={avatarSrc}
               />
               <VFlex spacing="0">
                 <Typography.Heading size="h6" gutterBottom="cmp-xxs">
                   Rick Sanchez
                 </Typography.Heading>
-                <Typography.Paragraph gutterBottom="0">
+                <Typography.Paragraph>
                   rick.sanchez@devo.com
                 </Typography.Paragraph>
                 <HFlex spacing="cmp-xxs" marginBottom="cmp-xs">
                   <Icon size="xxs" colorScheme="weaker">
                     {<GIDiamondPrizeAwardJewelleryRing />}
                   </Icon>
-                  <Typography.Paragraph gutterBottom="0" colorScheme="weaker">
+                  <Typography.Paragraph colorScheme="weaker">
                     admin
                   </Typography.Paragraph>
                 </HFlex>
@@ -336,8 +297,8 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
           <Menu.Separator />
           <Popover
             appendTo={null}
-            id="user-options-popover__domains"
-            placement="left-start"
+            id="user-options-popover__timezone"
+            placement="left"
             modifiers={[
               {
                 name: 'offset',
@@ -350,84 +311,91 @@ export const UserOptions: React.FC<UserOptionsProps> = ({ compact }) => {
             {({ ref, toggle, isOpened }) => (
               <Menu.Item
                 ref={ref as React.Ref<HTMLButtonElement>}
-                label="Change domain"
-                icon={<GIWorldEarthWorldwideInternationalLanguage />}
+                label="Timezone"
+                icon={<GITimeZone />}
                 bottomContent={
-                  <Typography.Heading size="h6">
-                    {currentDomain}
-                  </Typography.Heading>
+                  <Typography format="action-sm" colorScheme="stronger">
+                    UTC+2:00
+                  </Typography>
                 }
                 onClick={toggle}
                 unlimitedHeight
                 expandable
                 state={isOpened ? 'expanded' : undefined}
                 aria-expanded={isOpened}
-                aria-controls="user-options-popover__domains"
+                aria-controls="user-options-popover__timezone"
                 aria-haspopup="true"
               />
             )}
             {({ setOpened }) => (
-              <Popover.Panel width="34rem" padding="0">
+              <Popover.Panel width="54rem" padding="0">
                 <Panel.Header
                   size="sm"
-                  title="Change domain"
+                  title="Time zone configuration"
                   closeSettings={{
                     onClick: () => setOpened?.(false),
                     tooltip: 'Close this panel',
                   }}
                 />
-                <Panel.Header as="div" size="sm" bordered>
-                  <Flex flex="1" marginBottom="cmp-xxs">
-                    <InputControl
-                      aria-label="Search for domains"
-                      type="search"
-                      placeholder="Search domain..."
-                      onChange={() => setIsSearching(true)}
-                      onBlur={() => setIsSearching(false)}
-                    />
-                  </Flex>
-                </Panel.Header>
                 <Panel.Body size="sm">
-                  <Menu cmpRole="menu">
-                    {isSearching ? (
-                      <Menu.Item
-                        label="waffleiron"
-                        icon={
-                          <Icon colorScheme="success-weak">
-                            {<GICheckOkRoundedFilled />}
-                          </Icon>
-                        }
-                        state="selected"
-                      />
-                    ) : (
-                      <>
-                        {domainsConfig.map((domain, index) => (
-                          <Menu.Item
-                            key={index}
-                            label={domain.name}
-                            icon={
-                              <Icon
-                                colorScheme={
-                                  domain.status === 'success'
-                                    ? 'success-weak'
-                                    : domain.status
-                                }
-                              >
-                                {STATUS_ICON_MAP[domain.status]}
-                              </Icon>
-                            }
-                            state={
-                              currentDomain === domain.name
-                                ? 'selected'
-                                : 'enabled'
-                            }
-                            onChange={() => setCurrentDomain(domain.name)}
-                          />
-                        ))}
-                      </>
-                    )}
-                  </Menu>
+                  <Form aria-label="Time zone configuration form">
+                    <Checkbox
+                      label="Set timezone automatically"
+                      id="timezone-auto"
+                      defaultChecked
+                      onChange={() => setTimeZoneAuto(!timeZoneAuto)}
+                    />
+                    <SelectControl
+                      aria-label="Select the timezone"
+                      menuAppendToBody
+                      isDisabled={timeZoneAuto}
+                      options={[
+                        { value: 1, label: 'Option one' },
+                        { value: 2, label: 'Option two' },
+                        { value: 4, label: 'Option four' },
+                        { value: 5, label: 'Option five' },
+                        { value: 6, label: 'Option six' },
+                        { value: 7, label: 'Option seven' },
+                      ]}
+                      placeholder="CET - Europe/Madrid (UTC + 02:00)"
+                    />
+                    <img
+                      src={`/timezone-map${theme.meta.scheme === 'dark' ? '-dark' : ''}.png`}
+                      alt="Timezone map"
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                    <Banner
+                      title="Your current timezone"
+                      content="CET - Europe/Madrid, ES - 12:28:20 (+02:00)"
+                      status="info"
+                    />
+                  </Form>
                 </Panel.Body>
+                <Panel.Footer>
+                  <HFlex justifyContent="space-between" flex="1">
+                    <Checkbox
+                      label="Apply changes only to this session"
+                      id="timezone-apply"
+                      onChange={() => setTimeZoneAuto(!timeZoneAuto)}
+                    />
+                    <HFlex justifyContent="flex-end">
+                      <Button
+                        key="timezone-btn-1"
+                        colorScheme="quiet"
+                        onClick={() => setOpened?.(false)}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        key="timezone-btn-2"
+                        colorScheme="accent"
+                        onClick={() => setOpened?.(false)}
+                      >
+                        Save changes
+                      </Button>
+                    </HFlex>
+                  </HFlex>
+                </Panel.Footer>
               </Popover.Panel>
             )}
           </Popover>

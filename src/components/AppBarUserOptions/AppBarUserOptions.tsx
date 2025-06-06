@@ -3,10 +3,10 @@ import * as React from 'react';
 import { Divider, HFlex } from '@devoinc/genesys-ui';
 
 import {
+  Domain,
   HelpCenter,
   Notifications,
   Search,
-  TimeZone,
   UserOptions,
 } from './components';
 
@@ -21,7 +21,7 @@ export const AppBarUserOptions: React.FC<AppBarUserOptionsProps> = ({
     <Search compact={compact} />
     <Notifications compact={compact} />
     <HelpCenter compact={compact} />
-    <TimeZone compact={compact} />
+    <Domain compact={compact} />
     <Divider vertical margin="0" height={compact ? '1.8rem' : undefined} />
     <UserOptions compact={compact} />
   </HFlex>

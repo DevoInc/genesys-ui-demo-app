@@ -1,16 +1,11 @@
 import * as React from 'react';
 
-import {
-  GIAlerts,
-  GIFlow,
-  GIGaugeDashboardFullFuel,
-  GISearchFindZoom,
-} from '@devoinc/genesys-icons';
+import { GISearchFindZoom } from '@devoinc/genesys-icons';
 
 import {
   USER_OPTIONS_POPOVER_OFFSET,
   USER_OPTIONS_POPOVER_OFFSET_COMPACT,
-} from '../constants';
+} from '../../constants';
 
 import {
   Box,
@@ -27,7 +22,8 @@ import {
   VFlex,
 } from '@devoinc/genesys-ui';
 
-import { AppBarUserOptionsProps } from '../AppBarUserOptions';
+import { AppBarUserOptionsProps } from '../../AppBarUserOptions';
+import { SearchItem } from './SearchItem';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface SearchProps extends AppBarUserOptionsProps {}
@@ -36,6 +32,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
   const [isSearching, setIsSearching] = React.useState(false);
   const tabsRef = React.useRef<HTMLDivElement>();
   const [activeTab, setActiveTab] = React.useState(0);
+  const label = 'Search within Devo';
   return (
     <Popover
       id="appbar-search-dropdown"
@@ -65,6 +62,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
           ref={ref as React.Ref<HTMLButtonElement>}
           onClick={toggle}
           state={isOpened ? 'expanded' : undefined}
+          tooltip={label}
         >
           <GISearchFindZoom
             size={compact ? '1.8rem' : '2rem'}
@@ -73,9 +71,9 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
         </IconButton>
       )}
       {({ setOpened }) => (
-        <Popover.Panel width="48rem">
+        <Popover.Panel width="48rem" padding="0">
           <Panel.Header
-            title="Search Devo"
+            title={label}
             closeSettings={{
               onClick: () => setOpened?.(false),
               tooltip: 'Close this panel',
@@ -86,6 +84,7 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
             <Flex flex="1" marginBottom="cmp-xxs">
               <InputControl
                 aria-label="Search content in the whole app"
+                autoFocus
                 type="search"
                 placeholder="Find Activeboards, Data searches, Flows, Web sections, etc."
                 onChange={() => setIsSearching(true)}
@@ -142,106 +141,40 @@ export const Search: React.FC<SearchProps> = ({ compact }) => {
                   </ChipGroup>
                 </VFlex>
                 <Menu cmpRole="nav">
-                  <Menu.Item
-                    href="#"
-                    icon={<GIGaugeDashboardFullFuel />}
+                  <SearchItem
+                    type="activeboard"
                     label="siem.logtrust.alerts.dispatched"
-                    appendContent={
-                      <Flex.Item marginLeft="auto">
-                        <Typography.Caption colorScheme="weak" size="xs">
-                          Activeboard
-                        </Typography.Caption>
-                      </Flex.Item>
-                    }
                   />
-                  <Menu.Item
-                    href="#"
-                    icon={<GISearchFindZoom />}
+                  <SearchItem
+                    type="search"
                     label="siem.logtrust.web.activityAll"
-                    appendContent={
-                      <Flex.Item marginLeft="auto">
-                        <Typography.Caption colorScheme="weak" size="xs">
-                          Data search
-                        </Typography.Caption>
-                      </Flex.Item>
-                    }
                   />
                 </Menu>
               </>
+            ) : activeTab === 0 ? (
+              <Menu cmpRole="nav">
+                <SearchItem
+                  type="activeboard"
+                  label="siem.logtrust.alerts.dispatched"
+                />
+                <SearchItem type="activeboard" label="DnsAnomalies_by10IP" />
+                <SearchItem type="flow" label="DevoManagedQuery" />
+                <SearchItem type="activeboard" label="Loxcope router" />
+                <SearchItem
+                  type="search"
+                  label="siem.logtrust.web.activityAll"
+                />
+                <SearchItem
+                  type="alert"
+                  label="Apache too many byte range requests"
+                />
+              </Menu>
             ) : (
               <Menu cmpRole="nav">
-                <Menu.Item
-                  href="#"
-                  icon={<GIGaugeDashboardFullFuel />}
-                  label="siem.logtrust.alerts.dispatched"
-                  appendContent={
-                    <Flex.Item marginLeft="auto">
-                      <Typography.Caption colorScheme="weak" size="xs">
-                        Activeboard
-                      </Typography.Caption>
-                    </Flex.Item>
-                  }
-                />
-                <Menu.Item
-                  href="#"
-                  icon={<GIGaugeDashboardFullFuel />}
-                  label="DnsAnomalies_by10IP"
-                  appendContent={
-                    <Flex.Item marginLeft="auto">
-                      <Typography.Caption colorScheme="weak" size="xs">
-                        Activeboard
-                      </Typography.Caption>
-                    </Flex.Item>
-                  }
-                />
-                <Menu.Item
-                  href="#"
-                  icon={<GIFlow />}
-                  label="DevoManagedQuery"
-                  appendContent={
-                    <Flex.Item marginLeft="auto">
-                      <Typography.Caption colorScheme="weak" size="xs">
-                        Flow
-                      </Typography.Caption>
-                    </Flex.Item>
-                  }
-                />
-                <Menu.Item
-                  href="#"
-                  icon={<GIGaugeDashboardFullFuel />}
-                  label="Loxcope router"
-                  appendContent={
-                    <Flex.Item marginLeft="auto">
-                      <Typography.Caption colorScheme="weak" size="xs">
-                        Activeboard
-                      </Typography.Caption>
-                    </Flex.Item>
-                  }
-                />
-                <Menu.Item
-                  href="#"
-                  icon={<GISearchFindZoom />}
-                  label="siem.logtrust.web.activityAll"
-                  appendContent={
-                    <Flex.Item marginLeft="auto">
-                      <Typography.Caption colorScheme="weak" size="xs">
-                        Search
-                      </Typography.Caption>
-                    </Flex.Item>
-                  }
-                />
-                <Menu.Item
-                  href="#"
-                  icon={<GIAlerts />}
-                  label="Apache too many byte range requests"
-                  appendContent={
-                    <Flex.Item marginLeft="auto">
-                      <Typography.Caption colorScheme="weak" size="xs">
-                        Alert
-                      </Typography.Caption>
-                    </Flex.Item>
-                  }
-                />
+                <SearchItem type="page" label="Search" />
+                <SearchItem type="page" label="Flow" />
+                <SearchItem type="page" label="Preferences" />
+                <SearchItem type="page" label="Users" />
               </Menu>
             )}
           </Panel.Body>
